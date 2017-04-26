@@ -1,4 +1,4 @@
-#Based on XeroBorg stepper example
+##Based on XeroBorg stepper example
 
 #!/usr/bin/env python
 # coding: latin-1
