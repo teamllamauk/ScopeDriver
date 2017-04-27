@@ -181,7 +181,7 @@ Warning, this new I²C address will still be used after resetting the power on t
     else:
         print 'Failed to set new I²C address...'
 
-　
+
 # Class used to control ZeroBorg
 class ZeroBorg:
     """
