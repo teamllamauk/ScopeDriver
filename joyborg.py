@@ -95,6 +95,8 @@ def PygameHandler(events):
             if axisLeftRightInverted:
                 leftRight = -leftRight
             # Determine Up / Down values
+            print upDown
+            print leftRight
             if upDown < -1000:
                 moveUp = True
                 moveDown = False
@@ -124,25 +126,25 @@ try:
             # Keys have changed, generate the command list based on keys
             hadEvent = False
             if moveQuit:
-                pygame.display.set_caption("Stop")
+                print 'Stop'
                 break
             elif moveLeft:
                 #text = font.render("Move Left", True, (0, 128, 0))
-                pygame.display.set_caption("Move Left")
+                print 'Move Left'
                 leftState = GPIO.LOW
                 rightState = GPIO.HIGH
             elif moveRight:
                 #text = font.render("Move Right", True, (0, 128, 0))
-                pygame.display.set_caption("Move Right")
+                print 'Move Right'
                 leftState = GPIO.HIGH
                 rightState = GPIO.LOW
             elif moveUp:
-                pygame.display.set_caption("Move Up")
+                print 'Move Up'
                 #text = font.render("Move Up", True, (0, 128, 0))
                 leftState = GPIO.HIGH
                 rightState = GPIO.HIGH
             else:
-                pygame.display.set_caption("Move Down")
+                print 'Move Down'
                 #text = font.render("Move Down", True, (0, 128, 0))
                 leftState = GPIO.LOW
                 rightState = GPIO.LOW
