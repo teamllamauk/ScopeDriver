@@ -272,7 +272,7 @@ If tryOtherBus is True or omitted, this function will attempt to use the other b
         else:
             self.Print('ZeroBorg loaded on bus %d' % (self.busNumber))
 
-　
+
     def SetMotor1(self, power):
         """
 SetMotor1(power)
@@ -304,7 +304,7 @@ SetMotor1(1)     -> motor 1 moving forward at 100% power
         except:
             self.Print('Failed sending motor 1 drive level!')
 
-　
+
     def GetMotor1(self):
         """
 power = GetMotor1()
@@ -333,7 +333,7 @@ e.g.
         else:
             return
 
-　
+
     def SetMotor2(self, power):
         """
 SetMotor1(power)
@@ -365,7 +365,7 @@ SetMotor2(1)     -> motor 2 moving forward at 100% power
         except:
             self.Print('Failed sending motor 2 drive level!')
 
-　
+
     def GetMotor2(self):
         """
 power = GetMotor2()
