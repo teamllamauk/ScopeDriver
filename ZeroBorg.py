@@ -201,7 +201,7 @@ printFunction           Function reference to call when printing text, if None "
     foundChip               = False
     printFunction           = None
 
-　
+
     def Print(self, message):
         """
 Print(message)
