@@ -224,7 +224,7 @@ ZB.printFunction = ZB.NoPrint
         """
         pass
 
-　
+
     def Init(self, tryOtherBus = True):
         """
 Init([tryOtherBus])
