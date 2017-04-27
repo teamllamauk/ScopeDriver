@@ -32,7 +32,7 @@ global ZB
 
 # Setup the ZeroBorg
 ZB = ZeroBorg.ZeroBorg()
-#ZB.i2cAddress = 0x44                   # Uncomment and change the value if you have changed the board address
+ZB.i2cAddress = 0x0A                   # Uncomment and change the value if you have changed the board address
 ZB.Init()
 if not ZB.foundChip:
     boards = ZeroBorg.ScanForZeroBorg()
