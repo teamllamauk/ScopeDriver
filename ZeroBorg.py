@@ -800,7 +800,7 @@ Returns the value as a voltage based on the 3.3 V reference pin (pin 1).
         level = float(raw) / float(COMMAND_ANALOG_MAX)
         return level * 3.3
 
-　
+
     def SetCommsFailsafe(self, state):
         """
 SetCommsFailsafe(state)
@@ -822,7 +822,7 @@ The failsafe is disabled at power on
         except:
             self.Print('Failed sending communications failsafe state!')
 
-　
+
     def GetCommsFailsafe(self):
         """
 state = GetCommsFailsafe()
@@ -843,7 +843,7 @@ The failsafe will turn the motors off unless it is commanded at least once every
         else:
             return True
 
-　
+
     def Help(self):
         """
 Help()
