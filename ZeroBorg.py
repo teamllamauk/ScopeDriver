@@ -213,7 +213,7 @@ Wrapper used by the ZeroBorg instance to print messages, will call printFunction
         else:
             self.printFunction(message)
 
-　
+
     def NoPrint(self, message):
         """
 NoPrint(message)
