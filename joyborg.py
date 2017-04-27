@@ -54,8 +54,10 @@ moveRight = False
 moveQuit = False
 pygame.init()
 pygame.joystick.init()
+pygame.font.init()
 joystick = pygame.joystick.Joystick(0)
 joystick.init()
+font = pygame.font.SysFont("comicsansms", 12)
 screen = pygame.display.set_mode([300,300])
 pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 
@@ -126,19 +128,25 @@ try:
             if moveQuit:
                 break
             elif moveLeft:
+                text = font.render("Move Left", True, (0, 128, 0))
                 leftState = GPIO.LOW
                 rightState = GPIO.HIGH
             elif moveRight:
+                text = font.render("Move Right", True, (0, 128, 0))
                 leftState = GPIO.HIGH
                 rightState = GPIO.LOW
             elif moveUp:
+                text = font.render("Move Up", True, (0, 128, 0))
                 leftState = GPIO.HIGH
                 rightState = GPIO.HIGH
             else:
+                text = font.render("Move Down", True, (0, 128, 0))
                 leftState = GPIO.LOW
                 rightState = GPIO.LOW
             GPIO.output(leftDrive, leftState)
             GPIO.output(rightDrive, rightState)
+            screen.blit(text, (320 - text.get_width() // 2, 240 - text.get_height() // 2))
+            pygame.display.flip()
         # Wait for the interval period
         time.sleep(interval)
     # Disable all drives
