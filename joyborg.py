@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # coding: Latin-1
 
+#pre-req : sudo apt-get -y install joystick
+#pre-req : jstest /dev/input/js0
+
 # Load library functions we want
 import time
 import pygame
