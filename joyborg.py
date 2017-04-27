@@ -128,7 +128,7 @@ try:
             if moveQuit:
                 break
             elif moveLeft:
-                text = font.render("Move Left", True, (0, 128, 0))
+                text = font.render("Move Left", True, (0, 128, 0))
                 leftState = GPIO.LOW
                 rightState = GPIO.HIGH
             elif moveRight:
