@@ -97,20 +97,20 @@ def PygameHandler(events):
             # Determine Up / Down values
             print upDown
             print leftRight
-            if upDown < -1000:
+            if upDown < -0.5:
                 moveUp = True
                 moveDown = False
-            elif upDown > 1000:
+            elif upDown > 0.5:
                 moveUp = False
                 moveDown = True
             else:
                 moveUp = False
                 moveDown = False
             # Determine Left / Right values
-            if leftRight < -1000:
+            if leftRight < -0.5:
                 moveLeft = True
                 moveRight = False
-            elif leftRight > 1000:
+            elif leftRight > 0.5:
                 moveLeft = False
                 moveRight = True
             else:
@@ -128,28 +128,32 @@ try:
             if moveQuit:
                 print 'Stop'
                 break
-            elif moveLeft:
-                #text = font.render("Move Left", True, (0, 128, 0))
+            elif moveLeft == True and moveRight == False:                
                 print 'Move Left'
-                leftState = GPIO.LOW
-                rightState = GPIO.HIGH
-            elif moveRight:
-                #text = font.render("Move Right", True, (0, 128, 0))
+                #leftState = GPIO.LOW
+                #rightState = GPIO.HIGH
+            elif moveLeft == False and moveRight == True:                
                 print 'Move Right'
-                leftState = GPIO.HIGH
-                rightState = GPIO.LOW
-            elif moveUp:
+                #leftState = GPIO.HIGH
+                #rightState = GPIO.LOW
+                #elif moveLeft == False and moveRight == False:
+                #print 'Stop Left Right'
+                #leftState = GPIO.LOW
+                #rightState = GPIO.LOW
+            elif moveUp == True and moveDown == False:
                 print 'Move Up'
-                #text = font.render("Move Up", True, (0, 128, 0))
-                leftState = GPIO.HIGH
-                rightState = GPIO.HIGH
+                #leftState = GPIO.HIGH
+                #rightState = GPIO.HIGH
+            elif moveUp == False and moveDown == True:
+                print 'Move Down'                
+                #leftState = GPIO.LOW
+                #rightState = GPIO.LOW
+                #elif moveUp == False and moveDown == False:
+                #print 'Stop Up Down
             else:
-                print 'Move Down'
-                #text = font.render("Move Down", True, (0, 128, 0))
-                leftState = GPIO.LOW
-                rightState = GPIO.LOW
-            GPIO.output(leftDrive, leftState)
-            GPIO.output(rightDrive, rightState)
+                print 'Stop'
+            #GPIO.output(leftDrive, leftState)
+            #GPIO.output(rightDrive, rightState)
             #screen.blit(text, (320 - text.get_width() // 2, 240 - text.get_height() // 2))
             #pygame.display.flip()
         # Wait for the interval period
