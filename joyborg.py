@@ -145,7 +145,7 @@ try:
                 rightState = GPIO.LOW
             GPIO.output(leftDrive, leftState)
             GPIO.output(rightDrive, rightState)
-            screen.blit(text, (320 - text.get_width() // 2, 240 - text.get_height() // 2))
+            screen.blit(text, (320 - text.get_width() // 2, 240 - text.get_height() // 2))
             pygame.display.flip()
         # Wait for the interval period
         time.sleep(interval)
