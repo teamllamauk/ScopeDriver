@@ -394,7 +394,7 @@ e.g.
         else:
             return
 
-　
+
     def SetMotor3(self, power):
         """
 SetMotor3(power)
@@ -426,7 +426,7 @@ SetMotor3(1)     -> motor 3 moving forward at 100% power
         except:
             self.Print('Failed sending motor 3 drive level!')
 
-　
+
     def GetMotor3(self):
         """
 power = GetMotor3()
@@ -455,7 +455,7 @@ e.g.
         else:
             return
 
-　
+
     def SetMotor4(self, power):
         """
 SetMotor4(power)
@@ -487,7 +487,7 @@ SetMotor4(1)     -> motor 4 moving forward at 100% power
         except:
             self.Print('Failed sending motor 4 drive level!')
 
-　
+
     def GetMotor4(self):
         """
 power = GetMotor4()
@@ -516,7 +516,7 @@ e.g.
         else:
             return
 
-　
+
     def SetMotors(self, power):
         """
 SetMotors(power)
@@ -548,7 +548,7 @@ SetMotors(1)     -> all motors are moving forward at 100% power
         except:
             self.Print('Failed sending all motors drive level!')
 
-　
+
     def MotorsOff(self):
         """
 MotorsOff()
@@ -562,7 +562,7 @@ Sets all motors to stopped, useful when ending a program
         except:
             self.Print('Failed sending motors off command!')
 
-　
+
     def SetLed(self, state):
         """
 SetLed(state)
@@ -581,7 +581,7 @@ Sets the current state of the LED, False for off, True for on
         except:
             self.Print('Failed sending LED state!')
 
-　
+
     def GetLed(self):
         """
 state = GetLed()
@@ -601,7 +601,7 @@ Reads the current state of the LED, False for off, True for on
         else:
             return True
 
-　
+
     def ResetEpo(self):
         """
 ResetEpo()
@@ -615,7 +615,7 @@ Resets the EPO latch state, use to allow movement again after the EPO has been t
         except:
             self.Print('Failed resetting EPO!')
 
-　
+
     def GetEpo(self):
         """
 state = GetEpo()
@@ -638,7 +638,7 @@ If True the EPO has been tripped, movement is disabled if the EPO is not ignored
         else:
             return True
 
-　
+
     def SetEpoIgnore(self, state):
         """
 SetEpoIgnore(state)
@@ -657,7 +657,7 @@ Sets the system to ignore or use the EPO latch, set to False if you have an EPO 
         except:
             self.Print('Failed sending EPO ignore state!')
 
-　
+
     def GetEpoIgnore(self):
         """
 state = GetEpoIgnore()
@@ -677,7 +677,7 @@ Reads the system EPO ignore state, False for using the EPO latch, True for ignor
         else:
             return True
 
-　
+
     def HasNewIrMessage(self):
         """
 state = HasNewIrMessage()
@@ -699,7 +699,7 @@ If True there has been a new IR message which can be read using GetIrMessage().
         else:
             return True
 
-　
+
     def GetIrMessage(self):
         """
 message = GetIrMessage()
@@ -721,7 +721,7 @@ Use HasNewIrMessage() to see if there has been a new IR message since the last c
             message += '%02X' % (i2cRecv[1+i])
         return message.rstrip('0')
 
-　
+
     def SetLedIr(self, state):
         """
 SetLedIr(state)
@@ -740,7 +740,7 @@ Sets if IR messages control the state of the LED, False for no effect, True for 
         except:
             self.Print('Failed sending LED state!')
 
-　
+
     def GetLedIr(self):
         """
 state = GetLedIr()
@@ -760,7 +760,7 @@ Reads if IR messages control the state of the LED, False for no effect, True for
         else:
             return True
 
-　
+
     def GetAnalog1(self):
         """
 voltage = GetAnalog1()
@@ -780,7 +780,7 @@ Returns the value as a voltage based on the 3.3 V reference pin (pin 1).
         level = float(raw) / float(COMMAND_ANALOG_MAX)
         return level * 3.3
 
-　
+
     def GetAnalog2(self):
         """
 voltage = GetAnalog2()
