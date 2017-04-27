@@ -3,7 +3,7 @@
 
 # Import library functions we need
 import sys
-sys.ptah.append('/home/pi/zeroborg')
+sys.path.append('/home/pi/zeroborg')
 import ZeroBorg
 import time
 import threading
