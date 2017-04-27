@@ -113,7 +113,7 @@ The busNumber if supplied is which I²C bus to scan, 0 for Rev 1 boards, 1 for R
         print '%d ZeroBorg boards found' % (len(found))
     return found
 
-　
+
 def SetNewAddress(newAddress, oldAddress = -1, busNumber = 1):
     """
 SetNewAddress(newAddress, [oldAddress], [busNumber])
