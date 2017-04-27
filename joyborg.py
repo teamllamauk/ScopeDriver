@@ -95,20 +95,20 @@ def PygameHandler(events):
             if axisLeftRightInverted:
                 leftRight = -leftRight
             # Determine Up / Down values
-            if upDown < -0.1:
+            if upDown < -1000:
                 moveUp = True
                 moveDown = False
-            elif upDown > 0.1:
+            elif upDown > 1000:
                 moveUp = False
                 moveDown = True
             else:
                 moveUp = False
                 moveDown = False
             # Determine Left / Right values
-            if leftRight < -0.1:
+            if leftRight < -1000:
                 moveLeft = True
                 moveRight = False
-            elif leftRight > 0.1:
+            elif leftRight > 1000:
                 moveLeft = False
                 moveRight = True
             else:
@@ -124,6 +124,7 @@ try:
             # Keys have changed, generate the command list based on keys
             hadEvent = False
             if moveQuit:
+                pygame.display.set_caption("Stop")
                 break
             elif moveLeft:
                 #text = font.render("Move Left", True, (0, 128, 0))
