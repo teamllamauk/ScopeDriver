@@ -65,6 +65,12 @@ def PygameHandler(events):
             hadEvent = True
             if event.key == pygame.K_ESCAPE:
                 moveQuit = False
+        elif event.type == pygame.JOYBUTTONDOWN:
+            button = event.button
+            print("Button {} on".format(button))
+        elif event.type == pygame.JOYBUTTONUP:
+            button = event.button
+            print("Button {} off".format(button))
         elif event.type == pygame.JOYAXISMOTION:
             # A joystick has been moved, read axis positions (-1 to +1)
             hadEvent = True
