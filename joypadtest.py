@@ -83,45 +83,22 @@ def PygameHandler(events):
                 leftRight = -leftRight
             # Determine Up / Down values
             if upDown < -0.5:
-                moveUp = True
-                moveDown = False
+                print 'Move Up'
             elif upDown > 0.5:
-                moveUp = False
-                moveDown = True
-            else:
-                moveUp = False
-                moveDown = False
+                print 'Move Down'          
+                
             # Determine Left / Right values
             if leftRight < -0.5:
-                moveLeft = True
-                moveRight = False
+                print 'Move Left'
             elif leftRight > 0.5:
-                moveLeft = False
-                moveRight = True
-            else:
-                moveLeft = False
-                moveRight = False
+                print 'Move Right'            
+                
 try:
     print 'Press [ESC] to quit'
     # Loop indefinitely
     while True:
         # Get the currently pressed keys on the keyboard
         PygameHandler(pygame.event.get())
-        if hadEvent:
-            # Keys have changed, generate the command list based on keys
-            hadEvent = False
-            if moveQuit:
-                print 'Stop'
-                break
-            elif moveLeft == True and moveRight == False:                
-                print 'Move Left'                
-            elif moveLeft == False and moveRight == True:                
-                print 'Move Right'                
-            elif moveUp == True and moveDown == False:
-                print 'Move Up'                
-            elif moveUp == False and moveDown == True:
-                print 'Move Down'                              
-            else:
-                print 'Stop'            
+                 
         # Wait for the interval period
         time.sleep(interval)
