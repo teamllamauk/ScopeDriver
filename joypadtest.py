@@ -101,3 +101,4 @@ try:
         PygameHandler(pygame.event.get())                 
         # Wait for the interval period
         time.sleep(interval)
+        
