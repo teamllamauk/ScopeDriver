@@ -4,6 +4,17 @@
 #pre-req : sudo apt-get -y install joystick
 #pre-req : jstest /dev/input/js0
 
+# Button 0: X
+# Button 1: A
+# Button 2: B
+# Button 3: Y
+# Button 4: L
+# Button 5: R
+
+# Button 8: Select
+# Button 9: Start
+
+
 # Load library functions we want
 import time
 import pygame
