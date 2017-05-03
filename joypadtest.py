@@ -98,7 +98,6 @@ try:
     # Loop indefinitely
     while True:
         # Get the currently pressed keys on the keyboard
-        PygameHandler(pygame.event.get())
-                 
+        PygameHandler(pygame.event.get())                 
         # Wait for the interval period
         time.sleep(interval)
