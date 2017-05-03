@@ -102,5 +102,4 @@ try:
         # Wait for the interval period
         time.sleep(interval)
 except:        
-        
-        
+    print 'Error'
