@@ -9,7 +9,7 @@ import time
 import threading
 
 # Power settings
-voltageIn = 8.4                         # Total battery voltage to the ZeroBorg (change to 9V if using a non-rechargeable battery)
+voltageIn = 9                         # Total battery voltage to the ZeroBorg (change to 9V if using a non-rechargeable battery)
 voltageOut = 3.0                        # Maximum stepper motor voltage when holding / turning
 
 # Setup the power limits
@@ -24,7 +24,8 @@ sequence = [                            # Order for stepping
         [+maxPower, -maxPower],
         [-maxPower, -maxPower],
         [-maxPower, +maxPower]] 
-stepDelay = 0.002                       # Delay between steps
+#stepDelay = 0.002                       # Delay between steps
+stepDelay = 0.02                       # Delay between steps
 stepsPerRotation = 360 / 1.8            # Steps required to fully rotate the motor
 
 # Name the global variables
