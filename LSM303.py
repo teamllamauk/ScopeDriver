@@ -1,4 +1,8 @@
 # I2C Addresses for device registers
+# ----------------------------------
+# https://cdn-shop.adafruit.com/datasheets/LSM303DLHC.PDF
+# https://github.com/adafruit/Adafruit_Python_LSM303
+#
 #
 # Check Device addresses (0x33/0x3D) with 'i2cdetect -y 0' in shell
 #
@@ -18,16 +22,17 @@
 #!/usr/bin/python
 
 import smbus
+busnumber = 0     # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
+bus = smbus.SMBus(busnumber)    
 
-bus = smbus.SMBus(0)    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
-
-COMPASS_ADDRESS = 0x3D      #7 bit address (will be left shifted to add the read write bit)
+COMPASS_ADDRESS = 0x3D      
 LINACC_ADDRESS = 0x33
 TEMP_ADDRESS = 0x3D
 
-DEVICE_REG_MODE1 = 0x00
-DEVICE_REG_LEDOUT0 = 0x1d
+COMPASS_X_REGISTERS = [0x03, 0x04]
+COMPASS_Y_REGISTERS = [0x05, 0x06]
+COMPASS_Z_REGISTERS = [0x07, 0x08]
 
 #Write an array of registers
-compass_x_values = [0x03, 0x04]
-bus.write_i2c_block_data(DEVICE_ADDRESS, DEVICE_REG_LEDOUT0, compass_x_values)
+
+compass_x = bus.read_i2c_block_data(COMPASS_ADDRESS, cmd)
