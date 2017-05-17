@@ -22,7 +22,30 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
+delay = 0.0055
+steps = 10
 
+# RA Motor Pins
+RA_coil_A_1_pin = 17
+RA_coil_A_2_pin = 18
+RA_coil_B_1_pin = 22
+RA_coil_B_2_pin = 23
+
+# DEC Motor Pins
+DEC_coil_A_1_pin = 8
+DEC_coil_A_2_pin = 9
+DEC_coil_B_1_pin = 10
+DEC_coil_B_2_pin = 11
+
+# Setup GPIO pins
+GPIO.setup(RA_coil_A_1_pin, GPIO.OUT)
+GPIO.setup(RA_coil_A_2_pin, GPIO.OUT)
+GPIO.setup(RA_coil_B_1_pin, GPIO.OUT)
+GPIO.setup(RA_coil_B_2_pin, GPIO.OUT)
+GPIO.setup(DEC_coil_A_1_pin, GPIO.OUT)
+GPIO.setup(DEC_coil_A_2_pin, GPIO.OUT)
+GPIO.setup(DEC_coil_B_1_pin, GPIO.OUT)
+GPIO.setup(DEC_coil_B_2_pin, GPIO.OUT)
 
 # Settings for JoyBorg
 axisUpDown = 1                          # Joystick axis to read for up / down position
@@ -119,14 +142,38 @@ def PygameHandler(events):
                 moveLeft = False
                 moveRight = False
 
-def driveDecMotor():
-    
-    
-    
-    
-def driveRAMotor():
-    
-    
+def driveMotor(motor, direction):
+    if direction == 1: # Forward
+        setStep(motor,1,0,1,0)
+        time.sleep(delay)
+        setStep(motor,0,1,1,0)
+        time.sleep(delay)
+        setStep(motor,0,1,0,1)
+        time.sleep(delay)
+        setStep(motor,1,0,0,1)
+        time.sleep(delay)
+    else: # Reverse
+        setStep(motor,1,0,0,1)
+        time.sleep(delay)
+        setStep(motor,0,1,0,1)
+        time.sleep(delay)
+        setStep(motor,0,1,1,0)
+        time.sleep(delay)
+        setStep(motor,1,0,1,0)
+        time.sleep(delay)
+
+# Function for step sequence
+def setStep(motor, w1, w2, w3, w4):
+    if motor == 1: # Dec
+        GPIO.output(DEC_coil_A_1_pin, w1)
+        GPIO.output(DEC_coil_A_2_pin, w2)
+        GPIO.output(DEC_coil_B_1_pin, w3)
+        GPIO.output(DEC_coil_B_2_pin, w4)
+    else: # RA
+        GPIO.output(RA_coil_A_1_pin, w1)
+        GPIO.output(RA_coil_A_2_pin, w2)
+        GPIO.output(RA_coil_B_1_pin, w3)
+        GPIO.output(RA_coil_B_2_pin, w4)
         
         
 try:
@@ -139,15 +186,19 @@ try:
         
         if moveUp == True and moveDown == False: 
             #Drive motor Up (Dec)
+            driveMotor(1, 1)
         elif moveUp == False and moveDown == True:
             #Drive motor Down (Dec)
+            driveMotor(1, 0)
         else:
             #Stop motor
             
         if moveLeft == True and moveRight == False:
             #Drive motor Left (RA)
+            driveMotor(0, 1)
         elif moveLeft == False and moveRight == True:
             #Drive motor Right (RA)
+            driveMotor(0, 0)
         else:
             #Stop motor   
         
