@@ -17,6 +17,7 @@
 
 # Load library functions we want
 import time
+import threading
 import pygame
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
@@ -61,12 +62,16 @@ global moveDown
 global moveLeft
 global moveRight
 global moveQuit
+global drivingUpDown
+global drivingLeftRight
 hadEvent = True
 moveUp = False
 moveDown = False
 moveLeft = False
 moveRight = False
 moveQuit = False
+drivingUpDown = False
+drivingLeftRight = False
 pygame.init()
 pygame.joystick.init()
 joystick = pygame.joystick.Joystick(0)
@@ -143,6 +148,11 @@ def PygameHandler(events):
                 moveRight = False
 
 def driveMotor(motor, direction):
+    if motor == 1:
+        drivingUpDown = True
+    else:
+        drivingLeftRight = True
+    
     if direction == 1: # Forward
         setStep(motor,1,0,1,0)
         time.sleep(delay)
@@ -161,6 +171,11 @@ def driveMotor(motor, direction):
         time.sleep(delay)
         setStep(motor,1,0,1,0)
         time.sleep(delay)
+        
+    if motor == 1:
+        drivingUpDown = False
+    else:
+        drivingLeftRight = False
 
 # Function for step sequence
 def setStep(motor, w1, w2, w3, w4):
@@ -184,21 +199,25 @@ try:
         PygameHandler(pygame.event.get())                 
         # Wait for the interval period
         
-        if moveUp == True and moveDown == False: 
+        if moveUp == True and moveDown == False and drivingUpDown = False:
             #Drive motor Up (Dec)
-            driveMotor(1, 1)
-        elif moveUp == False and moveDown == True:
-            #Drive motor Down (Dec)
-            driveMotor(1, 0)
+            t = threading.Thread(target=driveMotor,args=(1,1))
+            t.start()            
+        elif moveUp == False and moveDown == True and drivingUpDown = False:
+            #Drive motor Down (Dec)           
+            t = threading.Thread(target=driveMotor,args=(1,0))
+            t.start()
         else:
             #Stop motor
             
-        if moveLeft == True and moveRight == False:
+        if moveLeft == True and moveRight == False and drivingLeftRight = False:
             #Drive motor Left (RA)
-            driveMotor(0, 1)
-        elif moveLeft == False and moveRight == True:
+            t = threading.Thread(target=driveMotor,args=(0,1))
+            t.start()
+        elif moveLeft == False and moveRight == True and drivingLeftRight = False:
             #Drive motor Right (RA)
-            driveMotor(0, 0)
+            t = threading.Thread(target=driveMotor,args=(0,0))
+            t.start()
         else:
             #Stop motor   
         
