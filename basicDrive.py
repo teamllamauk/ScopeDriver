@@ -81,11 +81,11 @@ def PygameHandler(events):
                 
         elif event.type == pygame.JOYBUTTONDOWN:
             button = event.button
-            print("Button {} on".format(button))
+            # print("Button {} on".format(button))
             
         elif event.type == pygame.JOYBUTTONUP:
             button = event.button
-            print("Button {} off".format(button))
+            # print("Button {} off".format(button))
             
         elif event.type == pygame.JOYAXISMOTION:
             # A joystick has been moved, read axis positions (-1 to +1)
@@ -98,17 +98,37 @@ def PygameHandler(events):
             if axisLeftRightInverted:
                 leftRight = -leftRight
             # Determine Up / Down values
-            if upDown < -0.5:
-                print 'Move Up'
-            elif upDown > 0.5:
-                print 'Move Down'          
+            if upDown < -0.5: # Move Up (Dec)
+                moveUp = True
+                moveDown = False
+            elif upDown > 0.5: # Move Down (Dec)
+                moveUp = False
+                moveDown = True
+            else:
+                moveUp = False
+                moveDown = False
                 
             # Determine Left / Right values
-            if leftRight < -0.5:
-                print 'Move Left'
-            elif leftRight > 0.5:
-                print 'Move Right'            
-                
+            if leftRight < -0.5: # Move Left (RA)
+                moveLeft = True
+                moveRight = False
+            elif leftRight > 0.5: # Move Right (RA)
+                moveLeft = False
+                moveRight = True
+            else:
+                moveLeft = False
+                moveRight = False
+
+def driveDecMotor():
+    
+    
+    
+    
+def driveRAMotor():
+    
+    
+        
+        
 try:
     print 'Press [ESC] to quit'
     # Loop indefinitely
@@ -116,6 +136,21 @@ try:
         # Get the currently pressed keys on the keyboard
         PygameHandler(pygame.event.get())                 
         # Wait for the interval period
+        
+        if moveUp == True and moveDown == False: 
+            #Drive motor Up (Dec)
+        elif moveUp == False and moveDown == True:
+            #Drive motor Down (Dec)
+        else:
+            #Stop motor
+            
+        if moveLeft == True and moveRight == False:
+            #Drive motor Left (RA)
+        elif moveLeft == False and moveRight == True:
+            #Drive motor Right (RA)
+        else:
+            #Stop motor   
+        
         time.sleep(interval)
 except:        
     print 'Error'
