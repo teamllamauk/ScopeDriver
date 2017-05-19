@@ -135,7 +135,10 @@ def PygameHandler(events):
             else:
                 moveUp = False
                 moveDown = False
-                
+            
+            print moveUp
+            print moveDown
+            
             # Determine Left / Right values
             if leftRight < -0.5: # Move Left (RA)
                 moveLeft = True
