@@ -207,8 +207,9 @@ try:
             #Drive motor Down (Dec)           
             t = threading.Thread(target=driveMotor,args=(1,0))
             t.start()
-        else:
+        #else:
             #Stop motor
+            
             
         if moveLeft == True and moveRight == False and drivingLeftRight == False:
             #Drive motor Left (RA)
@@ -218,7 +219,7 @@ try:
             #Drive motor Right (RA)
             t = threading.Thread(target=driveMotor,args=(0,0))
             t.start()
-        else:
+        #else:
             #Stop motor   
         
         time.sleep(interval)
