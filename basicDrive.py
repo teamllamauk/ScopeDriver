@@ -199,22 +199,22 @@ try:
         PygameHandler(pygame.event.get())                 
         # Wait for the interval period
         
-        if moveUp == True and moveDown == False and drivingUpDown = False:
+        if moveUp == True and moveDown == False and drivingUpDown == False:
             #Drive motor Up (Dec)
             t = threading.Thread(target=driveMotor,args=(1,1))
             t.start()            
-        elif moveUp == False and moveDown == True and drivingUpDown = False:
+        elif moveUp == False and moveDown == True and drivingUpDown == False:
             #Drive motor Down (Dec)           
             t = threading.Thread(target=driveMotor,args=(1,0))
             t.start()
         else:
             #Stop motor
             
-        if moveLeft == True and moveRight == False and drivingLeftRight = False:
+        if moveLeft == True and moveRight == False and drivingLeftRight == False:
             #Drive motor Left (RA)
             t = threading.Thread(target=driveMotor,args=(0,1))
             t.start()
-        elif moveLeft == False and moveRight == True and drivingLeftRight = False:
+        elif moveLeft == False and moveRight == True and drivingLeftRight == False:
             #Drive motor Right (RA)
             t = threading.Thread(target=driveMotor,args=(0,0))
             t.start()
