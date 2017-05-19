@@ -35,8 +35,8 @@ import smbus
 import time
 
 # Define some device parameters
-I2C_ADDR  = 0x27 # I2C device address
-LCD_WIDTH = 16   # Maximum characters per line
+I2C_ADDR  = 0x20 # I2C device address
+LCD_WIDTH = 20   # Maximum characters per line
 
 # Define some device constants
 LCD_CHR = 1 # Mode - Sending data
