@@ -48,7 +48,7 @@ LCD_LINE_3 = 0x94 # LCD RAM address for the 3rd line
 LCD_LINE_4 = 0xD4 # LCD RAM address for the 4th line
 
 LCD_BACKLIGHT  = 0x08  # On
-#LCD_BACKLIGHT = 0x00  # Off
+LCD_BACKLIGHT = 0x00  # Off
 
 ENABLE = 0b00000100 # Enable bit
 
