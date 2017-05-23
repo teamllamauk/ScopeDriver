@@ -4,6 +4,7 @@
 # Author: Tony DiCola
 # License: Public Domain
 import time
+import math
 
 # Import the LSM303 module.
 import Adafruit_LSM303
@@ -24,6 +25,40 @@ while True:
     mag_x, mag_z, mag_y = mag
     print('Accel X={0}, Accel Y={1}, Accel Z={2}, Mag X={3}, Mag Y={4}, Mag Z={5}'.format(
           accel_x, accel_y, accel_z, mag_x, mag_y, mag_z))
+    
+    Axn = accel_x / math.sqrt(accel_x**2 + accel_y**2 + accel_z**2)
+    Ayn = accel_y / math.sqrt(accel_x**2 + accel_y**2 + accel_z**2)
+    
+    pitch = math.arcsin(-Axn)
+    roll = math.arcsin(Ayn / math.cos(pitch))
+    
+    MminX = 0
+    MmaxX = 0
+    
+    MminY = 0
+    MmaxY = 0
+    
+    MminZ = 0
+    MmaxZ = 0
+    
+    Mxc = (mag_x - MminX) / (MmaxX - MminX) * 2 - 1
+    Myc = (mag_y - MminY) / (MmaxY - MminY) * 2 - 1
+    Mzc = (mag_z - MminZ) / (MmaxZ - MminZ) * 2 - 1
+    
+    Mxh = Mxc * math.cos(pitch) + Mzc * math.sin(pitch)
+    Myh = Mxc * math.sin(roll) * math.sin(pitch) + Myc * math.cos(roll) - Mzc * math.sin(roll) * math.cos(pitch)
+        
+    heading = (math.atan2(mag_y, mag_x) * 180) / math.pi
+    if heading < 0:
+        heading = 360 + heading
+        
+    headingTilt = (math.atan2(Mxh, Mxh) * 180) / math.pi
+    if headingTilt < 0:
+        headingTilt = 360 + heading
+        
+    print('Compass heading: {0}'.format(heading))
+    print('Tilt Compass heading: {0}'.format(heading))
+    
     # Wait half a second and repeat.
     time.sleep(0.5)
 
