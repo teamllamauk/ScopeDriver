@@ -1,38 +1,29 @@
-# I2C Addresses for device registers
-# ----------------------------------
-# https://cdn-shop.adafruit.com/datasheets/LSM303DLHC.PDF
-# https://github.com/adafruit/Adafruit_Python_LSM303
-#
-#
-# Check Device addresses (0x33/0x3D) with 'i2cdetect -y 0' in shell
-#
-# Compass: 0x3D ??? 
-# Compass X: 0x03 & 0x04
-# Compass Y: 0x05 & 0x06
-# Compass Z: 0x07 & 0x08
-#
-# Lin Accel: 0x33 ???
-# Lin Accel X: 0x28 & 0x29
-# Lin Accel Y: 0x2A & 0x2B
-# Lin Accel Z: 0x2C & 0x2D
-#
-# Temp: 0x3D ???
-# Temp: 0x31 & 0x32
-#
-#!/usr/bin/python
+# Simple demo of of the LSM303 accelerometer & magnetometer library.
+# Will print the accelerometer & magnetometer X, Y, Z axis values every half
+# second.
+# Author: Tony DiCola
+# License: Public Domain
+import time
 
-import smbus
-busnumber = 0     # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
-bus = smbus.SMBus(busnumber)    
+# Import the LSM303 module.
+import Adafruit_LSM303
 
-COMPASS_ADDRESS = 0x3D      
-LINACC_ADDRESS = 0x33
-TEMP_ADDRESS = 0x3D
 
-COMPASS_X_REGISTERS = [0x03, 0x04]
-COMPASS_Y_REGISTERS = [0x05, 0x06]
-COMPASS_Z_REGISTERS = [0x07, 0x08]
+# Create a LSM303 instance.
+lsm303 = Adafruit_LSM303.LSM303()
 
-#Write an array of registers
+# Alternatively you can specify the I2C bus with a bus parameter:
+#lsm303 = Adafruit_LSM303.LSM303(busum=2)
 
-compass_x = bus.read_i2c_block_data(COMPASS_ADDRESS, cmd)
+print('Printing accelerometer & magnetometer X, Y, Z axis values, press Ctrl-C to quit...')
+while True:
+    # Read the X, Y, Z axis acceleration values and print them.
+    accel, mag = lsm303.read()
+    # Grab the X, Y, Z components from the reading and print them out.
+    accel_x, accel_y, accel_z = accel
+    mag_x, mag_z, mag_y = mag
+    print('Accel X={0}, Accel Y={1}, Accel Z={2}, Mag X={3}, Mag Y={4}, Mag Z={5}'.format(
+          accel_x, accel_y, accel_z, mag_x, mag_y, mag_z))
+    # Wait half a second and repeat.
+    time.sleep(0.5)
+
