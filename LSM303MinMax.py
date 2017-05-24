@@ -9,15 +9,15 @@ import Adafruit_LSM303
 lsm303 = Adafruit_LSM303.LSM303()
 
 AccelMinX = 0
-AccelMaxX = 0
-AccelMinY = 0
+AccelMaxY = 0
+AccelMinZ = 0
 AccelMaxX = 0
 AccelMinY = 0
 AccelMaxZ = 0
 
 MagMinX = 0
-MagMaxX = 0
-MagMinY = 0
+MagMaxY = 0
+MagMinZ = 0
 MagMaxX = 0
 MagMinY = 0
 MagMaxZ = 0
@@ -42,7 +42,7 @@ while True:
         AccelMinY = accel_y
         
     if accel_z < AccelMinZ:
-        AccelMinZ= accel_z
+        AccelMinZ = accel_z
     
     if accel_x > AccelMaxX:
         AccelMaxX = accel_x
