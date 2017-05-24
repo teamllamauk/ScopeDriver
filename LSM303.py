@@ -59,7 +59,7 @@ while True:
         
     headingTilt = (math.atan2(Mxh, Mxh) * 180) / math.pi
     if headingTilt < 0:
-        headingTilt = 360 + heading
+        headingTilt = 360 + headingTilt
         
     print('Compass heading: {0}'.format(heading))
     print('Tilt Compass heading: {0}'.format(headingTilt))
