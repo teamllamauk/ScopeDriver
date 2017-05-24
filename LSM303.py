@@ -62,7 +62,7 @@ while True:
         headingTilt = 360 + heading
         
     print('Compass heading: {0}'.format(heading))
-    print('Tilt Compass heading: {0}'.format(heading))
+    print('Tilt Compass heading: {0}'.format(headingTilt))
     
     # Wait half a second and repeat.
     time.sleep(0.5)
