@@ -76,3 +76,5 @@ while True:
         print('Acc Maxs: {0}, {1}, {2}'.format(AccelMinX,AccelMinY,AccelMinZ))
         print('Mag Mins: {0}, {1}, {2}'.format(MagMinX,MagMinY,MagMinZ))
         print('Mag Maxs: {0}, {1}, {2}'.format(MagMaxX,MagMaxY,MagMaxZ))
+        
+        lastmillis = millies
