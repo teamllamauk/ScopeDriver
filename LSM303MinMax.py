@@ -71,7 +71,7 @@ while True:
     if mag_z > MagMaxZ:
         MagMaxZ = mag_z
         
-    if (millies - lastmillis) > 1000:
+    if (millis - lastmillis) > 1000:
         print('Acc Mins: {0}, {1}, {2}'.format(AccelMinX,AccelMinY,AccelMinZ))
         print('Acc Maxs: {0}, {1}, {2}'.format(AccelMinX,AccelMinY,AccelMinZ))
         print('Mag Mins: {0}, {1}, {2}'.format(MagMinX,MagMinY,MagMinZ))
