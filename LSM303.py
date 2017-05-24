@@ -41,20 +41,20 @@ while True:
     MminZ = 500
     MmaxZ = 500
     
-    Mxc = (mag_x - MminX) / (MmaxX - MminX) * 2 - 1
-    Myc = (mag_y - MminY) / (MmaxY - MminY) * 2 - 1
-    Mzc = (mag_z - MminZ) / (MmaxZ - MminZ) * 2 - 1
+    #Mxc = (mag_x - MminX) / (MmaxX - MminX) * 2 - 1
+    #Myc = (mag_y - MminY) / (MmaxY - MminY) * 2 - 1
+    #Mzc = (mag_z - MminZ) / (MmaxZ - MminZ) * 2 - 1
     
-    Mxh = Mxc * math.cos(pitch) + Mzc * math.sin(pitch)
-    Myh = Mxc * math.sin(roll) * math.sin(pitch) + Myc * math.cos(roll) - Mzc * math.sin(roll) * math.cos(pitch)
+    #Mxh = Mxc * math.cos(pitch) + Mzc * math.sin(pitch)
+    #Myh = Mxc * math.sin(roll) * math.sin(pitch) + Myc * math.cos(roll) - Mzc * math.sin(roll) * math.cos(pitch)
         
     heading = (math.atan2(mag_y, mag_x) * 180) / math.pi
     if heading < 0:
         heading = 360 + heading
         
-    headingTilt = (math.atan2(Mxh, Mxh) * 180) / math.pi
-    if headingTilt < 0:
-        headingTilt = 360 + heading
+    #headingTilt = (math.atan2(Mxh, Mxh) * 180) / math.pi
+    #if headingTilt < 0:
+    #    headingTilt = 360 + heading
         
     print('Compass heading: {0}'.format(heading))
     print('Tilt Compass heading: {0}'.format(heading))
