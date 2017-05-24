@@ -32,14 +32,14 @@ while True:
     pitch = math.asin(-Axn)
     roll = math.asin(Ayn / math.cos(pitch))
     
-    MminX = 0
-    MmaxX = 0
+    MminX = 500
+    MmaxX = 500
     
-    MminY = 0
-    MmaxY = 0
+    MminY = 500
+    MmaxY = 500
     
-    MminZ = 0
-    MmaxZ = 0
+    MminZ = 500
+    MmaxZ = 500
     
     Mxc = (mag_x - MminX) / (MmaxX - MminX) * 2 - 1
     Myc = (mag_y - MminY) / (MmaxY - MminY) * 2 - 1
