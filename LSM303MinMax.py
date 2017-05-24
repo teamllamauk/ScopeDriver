@@ -73,7 +73,7 @@ while True:
         
     if (millis - lastmillis) > 1000:
         print('Acc Mins: {0}, {1}, {2}'.format(AccelMinX,AccelMinY,AccelMinZ))
-        print('Acc Maxs: {0}, {1}, {2}'.format(AccelMinX,AccelMinY,AccelMinZ))
+        print('Acc Maxs: {0}, {1}, {2}'.format(AccelMaxX,AccelMaxY,AccelMaxZ))
         print('Mag Mins: {0}, {1}, {2}'.format(MagMinX,MagMinY,MagMinZ))
         print('Mag Maxs: {0}, {1}, {2}'.format(MagMaxX,MagMaxY,MagMaxZ))
         
