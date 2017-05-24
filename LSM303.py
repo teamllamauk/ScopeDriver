@@ -29,8 +29,8 @@ while True:
     Axn = accel_x / math.sqrt(accel_x**2 + accel_y**2 + accel_z**2)
     Ayn = accel_y / math.sqrt(accel_x**2 + accel_y**2 + accel_z**2)
     
-    pitch = math.arcsin(-Axn)
-    roll = math.arcsin(Ayn / math.cos(pitch))
+    pitch = math.asin(-Axn)
+    roll = math.asin(Ayn / math.cos(pitch))
     
     MminX = 0
     MmaxX = 0
