@@ -56,6 +56,10 @@ class functions_lsm303():
     
     def inclination(self):
         
-        self.tilt = 0
+        self.acc, self.mag = lsm303.read()
+        
+        self.acc_X, self.acc_Y, self.acc_Z = self.acc
+                        
+        self.tilt = (math.atan2(self.acc_X, self.acc_Y) * 180) / math.pi
         
         return self.tilt
