@@ -1,8 +1,8 @@
 import functions_lsm303
 
-mdp_lsm303 = functions_lsm303.mdp_lsm303
+compass = functions_lsm303.functions_lsm303()
 
-heading = mdp_lsm303.bearing()
-tilt = mdp_lsm303.inclination()
+heading = compass.bearing()
+tilt = compass.inclination()
 
 print('Heading: {0}, Tilt: {1}'.format(heading,tilt))
