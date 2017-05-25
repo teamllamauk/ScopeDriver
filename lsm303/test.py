@@ -1,4 +1,4 @@
-from functions_lsm303 import mpd_LSM303
+import functions_lsm303
 
 heading = functions_lsm303.bearing()
 tilt = functions_lsm303.inclination()
