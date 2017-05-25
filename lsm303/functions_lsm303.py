@@ -5,7 +5,7 @@ import Adafruit_LSM303
 
 lsm303 = Adafruit_LSM303.LSM303()
 
-class mdp_lsm303(object):
+class functions_lsm303():
     
     def __init__(self):
         #set calibration values
