@@ -26,19 +26,19 @@ while True:
     print('Accel X={0}, Accel Y={1}, Accel Z={2}, Mag X={3}, Mag Y={4}, Mag Z={5}'.format(
           accel_x, accel_y, accel_z, mag_x, mag_y, mag_z))
        
-    #Acc Mins: -1290, -1306, -1017
-    #Acc Maxs: 1010, 1173, 1217
-    #Mag Mins: -767, -556, -1018
-    #Mag Maxs: 886, 1013, 670
+    #Acc Mins: -1346, -1375, -1143
+    #Acc Maxs: 961, 1511, 1255
+    #Mag Mins: -695, -529, -797
+    #Mag Maxs: 503, 679, 323
     
-    MminX = -767
-    MmaxX = 886
+    MminX = -695
+    MmaxX = 503
     
-    MminY = -556
-    MmaxY = 1013
+    MminY = -529
+    MmaxY = 679
     
-    MminZ = -1018
-    MmaxZ = 670
+    MminZ = -797
+    MmaxZ = 323
     
     Axn = accel_x / math.sqrt(accel_x * accel_x + accel_y * accel_y + accel_z * accel_z)
     Ayn = accel_y / math.sqrt(accel_x * accel_x + accel_y * accel_y + accel_z * accel_z)
