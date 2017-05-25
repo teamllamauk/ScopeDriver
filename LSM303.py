@@ -46,9 +46,9 @@ while True:
     pitch = math.asin(Axn)
     roll = -math.asin(Ayn / math.cos(pitch))
     
-    Mxc = (mag_x - MminX) / (MmaxX - MminX) * 2 - 1
-    Myc = (mag_y - MminY) / (MmaxY - MminY) * 2 - 1
-    Mzc = (mag_z - MminZ) / (MmaxZ - MminZ) * 2 - 1
+    Mxc = (mag_x - MminX) / (MminX + MmaxX) * 2 - 1
+    Myc = (mag_y - MminY) / (MminY + MmaxY) * 2 - 1
+    Mzc = (mag_z - MminZ) / (MminZ + MmaxZ) * 2 - 1
     
     magXcomp_cal = Mxc * math.cos(pitch) + Mzc * math.sin(pitch)
     magYcomp_cal = Mxc * math.sin(roll) * math.sin(pitch) + Myc * math.cos(roll) - Mzc * math.sin(roll) * math.cos(pitch)
