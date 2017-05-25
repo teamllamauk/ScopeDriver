@@ -1,4 +1,4 @@
-from functions_lsm303 import functions_lsm303
+import functions_lsm303
 
 mdp_lsm303 = functions_lsm303.mdp_lsm303
 
