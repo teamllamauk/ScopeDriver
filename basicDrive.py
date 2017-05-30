@@ -33,10 +33,10 @@ RA_coil_B_1_pin = 22
 RA_coil_B_2_pin = 23
 
 # DEC Motor Pins
-DEC_coil_A_1_pin = 8
-DEC_coil_A_2_pin = 9
-DEC_coil_B_1_pin = 10
-DEC_coil_B_2_pin = 11
+DEC_coil_A_1_pin = 1
+DEC_coil_A_2_pin = 5
+DEC_coil_B_1_pin = 6
+DEC_coil_B_2_pin = 13
 
 # Setup GPIO pins
 GPIO.setup(RA_coil_A_1_pin, GPIO.OUT)
