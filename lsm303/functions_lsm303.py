@@ -36,12 +36,12 @@ class functions_lsm303():
         self.pitch = math.asin(self.acc_Xnorm)
         self.roll = -math.asin(self.acc_Ynorm / math.cos(self.pitch))
         
-        #self.mag_Xcal = (self.mag_X - self.mag_Xmin) / (self.mag_Xmax - self.mag_Xmin) * 2 - 1
-        #self.mag_Ycal = (self.mag_Y - self.mag_Ymin) / (self.mag_Ymax - self.mag_Ymin) * 2 - 1
+        self.mag_Xcal = (self.mag_X - self.mag_Xmin) / (self.mag_Xmax - self.mag_Xmin) * 2 - 1
+        self.mag_Ycal = (self.mag_Y - self.mag_Ymin) / (self.mag_Ymax - self.mag_Ymin) * 2 - 1
         #self.mag_Zcal = (self.mag_Z - self.mag_Zmin) / (self.mag_Zmax - self.mag_Zmin) * 2 - 1
         
-        self.mag_Xcal = self.mag_X
-        self.mag_Ycal = self.mag_Y
+        #self.mag_Xcal = self.mag_X
+        #self.mag_Ycal = self.mag_Y
         self.mag_Zcal = self.mag_Z
         
         self.mag_Xtilt = self.mag_Xcal * math.cos(self.pitch) + self.mag_Zcal * math.sin(self.pitch)
