@@ -52,7 +52,7 @@ class functions_lsm303():
         if self.heading < 0:
             self.heading = 360 + self.heading
         
-        return self.heading
+        return int(self.heading)
     
     def inclination(self):
         
@@ -66,4 +66,4 @@ class functions_lsm303():
         
         self.tilt = self.tiltA
         
-        return self.tilt
+        return int(self.tilt)
