@@ -47,7 +47,8 @@ class functions_lsm303():
         self.mag_Xtilt = self.mag_Xcal * math.cos(self.pitch) + self.mag_Zcal * math.sin(self.pitch)
         self.mag_Ytilt = self.mag_Xcal * math.sin(self.roll) * math.sin(self.pitch) + self.mag_Ycal * math.cos(self.roll) - self.mag_Zcal * math.sin(self.roll) * math.cos(self.pitch)
         
-        self.heading = (math.atan2(self.mag_Xtilt, self.mag_Ytilt) * 180) / math.pi
+        self.heading = (math.atan2(self.mag_Xcal, self.mag_Ycal) * 180) / math.pi
+        #self.heading = (math.atan2(self.mag_Xtilt, self.mag_Ytilt) * 180) / math.pi
 
         self.heading = self.heading - 90 #correct for mounting of device
         
