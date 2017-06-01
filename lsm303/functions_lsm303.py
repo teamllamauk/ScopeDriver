@@ -49,7 +49,7 @@ class functions_lsm303():
         
         self.heading = (math.atan2(self.mag_Xtilt, self.mag_Ytilt) * 180) / math.pi
 
-        self.heading = self.heading + 90 #correct for mounting of device
+        self.heading = self.heading - 90 #correct for mounting of device
         
         if self.heading < 0:
             self.heading = 360 + self.heading
