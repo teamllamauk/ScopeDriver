@@ -14,5 +14,5 @@ backlight.rgb(255, 0, 0)
 lcd.set_cursor_position(0,0)
 lcd.write('H: {0}'.format(heading))
 
-lcd.set_cursor_position(0,1)
+lcd.set_cursor_position(9,0)
 lcd.write('T: {0}'.format(tilt))
