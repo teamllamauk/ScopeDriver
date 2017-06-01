@@ -64,6 +64,6 @@ class functions_lsm303():
         self.tiltB = (math.atan2(self.acc_X, self.acc_Z) * 180) / math.pi
         self.tiltC = (math.atan2(self.acc_Y, self.acc_Z) * 180) / math.pi
         
-        self.tilt = self.tiltA + ', ' + self.tiltB + ', ' + self.tiltC
+        self.tilt = self.tiltA
         
         return self.tilt
