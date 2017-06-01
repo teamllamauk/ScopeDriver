@@ -6,7 +6,7 @@ import functions_lsm303
 
 compass = functions_lsm303.functions_lsm303()
 
-lcd.clear()    
+lcd.clear()
 backlight.rgb(255, 0, 0)
 
 while True:
