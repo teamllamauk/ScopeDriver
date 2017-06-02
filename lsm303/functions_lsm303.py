@@ -47,13 +47,36 @@ class functions_lsm303():
         self.mag_Xtilt = self.mag_Xcal * math.cos(self.pitch) + self.mag_Zcal * math.sin(self.pitch)
         self.mag_Ytilt = self.mag_Xcal * math.sin(self.roll) * math.sin(self.pitch) + self.mag_Ycal * math.cos(self.roll) - self.mag_Zcal * math.sin(self.roll) * math.cos(self.pitch)
         
-        self.heading = (math.atan2(self.mag_Xcal, self.mag_Ycal) * 180) / math.pi
-        #self.heading = (math.atan2(self.mag_Xtilt, self.mag_Ytilt) * 180) / math.pi
+        self.heading = (math.atan2(self.mag_X, self.mag_X) * 180) / math.pi
+        self.headingCal = (math.atan2(self.mag_Xcal, self.mag_Ycal) * 180) / math.pi
+        self.headingTilt = (math.atan2(self.mag_Xtilt, self.mag_Ytilt) * 180) / math.pi
 
-        self.heading = self.heading + 180 #correct for mounting of device
+        #self.heading = self.heading + 180 #correct for mounting of device
         
         if self.heading < 0:
             self.heading = 360 + self.heading
+        
+        return (int(self.heading), int(self.headingCal), int(self.headingTilt))
+    
+    def bearingAltA(self):
+        
+        self.acc, self.mag = lsm303.read()
+        
+        self.acc_X, self.acc_Y, self.acc_Z = self.acc
+        self.mag_X, self.mag_Z, self.mag_Y = self.mag
+        
+        self.acc_Yf = self.acc_Y/57.0 #convert to radians
+        self.acc_Xf = self.acc_X/57.0 #convert to radians
+        
+        self.mag_Xh = self.mag_X * math.cos(self.acc_Yf) + self.mag_Y * math.sin(self.acc_Yf) * math.sin(self.acc.Xf) - self.mag_Z * math.cos(self.acc.Xf) * math.sin(self.acc_Yf)
+        self.mag_Yh = self.mag_Y * math.cos(self.acc_Xf) + self.mag_Z * math.sin(self.acc_Xf)
+        
+        self.heading = math.atan2(self.mag_Yh, self.mag_Xh) * (180 / math.pi) - 90 
+        
+        if self.heading > 0:
+            self.heading = self.heading - 360
+            
+        self.heading = self.heading + 360
         
         return int(self.heading)
     
@@ -66,7 +89,6 @@ class functions_lsm303():
         self.tiltA = (math.atan2(self.acc_X, self.acc_Y) * 180) / math.pi
         self.tiltB = (math.atan2(self.acc_X, self.acc_Z) * 180) / math.pi
         self.tiltC = (math.atan2(self.acc_Y, self.acc_Z) * 180) / math.pi
+               
         
-        self.tilt = self.tiltB
-        
-        return int(self.tilt)
+        return (int(self.tiltA), int(self.tiltB), int(self.tiltC))
