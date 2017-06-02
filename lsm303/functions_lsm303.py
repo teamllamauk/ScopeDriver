@@ -68,7 +68,7 @@ class functions_lsm303():
         self.acc_Yf = self.acc_Y/57.0 #convert to radians
         self.acc_Xf = self.acc_X/57.0 #convert to radians
         
-        self.mag_Xh = self.mag_X * math.cos(self.acc_Yf) + self.mag_Y * math.sin(self.acc_Yf) * math.sin(self.acc.Xf) - self.mag_Z * math.cos(self.acc.Xf) * math.sin(self.acc_Yf)
+        self.mag_Xh = self.mag_X * math.cos(self.acc_Yf) + self.mag_Y * math.sin(self.acc_Yf) * math.sin(self.acc_Xf) - self.mag_Z * math.cos(self.acc_Xf) * math.sin(self.acc_Yf)
         self.mag_Yh = self.mag_Y * math.cos(self.acc_Xf) + self.mag_Z * math.sin(self.acc_Xf)
         
         self.heading = math.atan2(self.mag_Yh, self.mag_Xh) * (180 / math.pi) - 90 
