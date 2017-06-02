@@ -9,12 +9,12 @@ class functions_lsm303():
     
     def __init__(self):
         #set calibration values
-        self.mag_Xmin = -435
-        self.mag_Xmax = 218    
-        self.mag_Ymin = -205
-        self.mag_Ymax = 399    
-        self.mag_Zmin = -739
-        self.mag_Zmax = 0
+        self.mag_Xmin = -424
+        self.mag_Xmax = 767    
+        self.mag_Ymin = -209
+        self.mag_Ymax = 701    
+        self.mag_Zmin = -808
+        self.mag_Zmax = 64
         
         self.acc_Xmin = -1290
         self.acc_Xmax = 1010    
