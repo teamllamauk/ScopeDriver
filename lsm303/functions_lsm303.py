@@ -23,6 +23,13 @@ class functions_lsm303():
         self.acc_Zmin = -1017
         self.acc_Zmax = 1217
     
+    def rawData(self):
+        
+        self.acc, self.mag = lsm303.read()
+        
+        return (self.acc, self.mag)
+        
+    
     def bearing(self):
         
         self.acc, self.mag = lsm303.read()
