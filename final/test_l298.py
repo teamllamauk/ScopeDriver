@@ -1,7 +1,7 @@
 import time
 import functions_l298
 
-L298 = functions_l298.functions_l298('0.0055', '10')
+L298 = functions_l298.functions_l298('0.0055', '40')
 
 while True:
     print('Drive 0, 0')
