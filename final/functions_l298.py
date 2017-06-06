@@ -4,12 +4,12 @@ import RPi.GPIO as GPIO
 
 class functions_l298():
     
-    def __init__(self):
+    def __init__(self, delay, steps):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         
-        self.delay = 0.0055
-        self.steps = 10
+        self.delay = delay #0.0055
+        self.steps = steps #10
         
         self.drivingUpDown = False
         self.drivingLeftRight = False
