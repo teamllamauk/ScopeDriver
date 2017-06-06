@@ -45,6 +45,7 @@ class functions_l298():
     
         if direction == 1: # Forward
             for _ in range(self.steps):
+                print('Loop 1')
                 self.setStep(motor,1,0,1,0)
                 time.sleep(self.delay)
                 self.setStep(motor,0,1,1,0)
@@ -55,6 +56,7 @@ class functions_l298():
                 time.sleep(self.delay)
         else: # Reverse
             for _ in range(self.steps):
+                print('Loop 0')
                 self.setStep(motor,1,0,0,1)
                 time.sleep(self.delay)
                 self.setStep(motor,0,1,0,1)
