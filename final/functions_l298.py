@@ -44,23 +44,25 @@ class functions_l298():
             self.drivingLeftRight = True
     
         if direction == 1: # Forward
-            self.setStep(motor,1,0,1,0)
-            time.sleep(self.delay)
-            self.setStep(motor,0,1,1,0)
-            time.sleep(self.delay)
-            self.setStep(motor,0,1,0,1)
-            time.sleep(self.delay)
-            self.setStep(motor,1,0,0,1)
-            time.sleep(self.delay)
+            for _ in range(self.steps)
+                self.setStep(motor,1,0,1,0)
+                time.sleep(self.delay)
+                self.setStep(motor,0,1,1,0)
+                time.sleep(self.delay)
+                self.setStep(motor,0,1,0,1)
+                time.sleep(self.delay)
+                self.setStep(motor,1,0,0,1)
+                time.sleep(self.delay)
         else: # Reverse
-            self.setStep(motor,1,0,0,1)
-            time.sleep(self.delay)
-            self.setStep(motor,0,1,0,1)
-            time.sleep(self.delay)
-            self.setStep(motor,0,1,1,0)
-            time.sleep(self.delay)
-            self.setStep(motor,1,0,1,0)
-            time.sleep(self.delay)
+            for _ in range(self.steps)
+                self.setStep(motor,1,0,0,1)
+                time.sleep(self.delay)
+                self.setStep(motor,0,1,0,1)
+                time.sleep(self.delay)
+                self.setStep(motor,0,1,1,0)
+                time.sleep(self.delay)
+                self.setStep(motor,1,0,1,0)
+                time.sleep(self.delay)
         
         if self.motor == 1:
             self.drivingUpDown = False
