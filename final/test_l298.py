@@ -1,3 +1,4 @@
+import time
 import functions_l298
 
 L298 = functions_l298.functions_l298('0.0055', '10')
