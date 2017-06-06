@@ -75,11 +75,13 @@ class functions_l298():
     def setStep(self, motor, w1, w2, w3, w4):
         
         if motor == 1: # Dec
+            print('Motor 1')
             GPIO.output(self.DEC_coil_A_1_pin, w1)
             GPIO.output(self.DEC_coil_A_2_pin, w2)
             GPIO.output(self.DEC_coil_B_1_pin, w3)
             GPIO.output(self.DEC_coil_B_2_pin, w4)
         else: # RA
+            print('Motor 0')
             GPIO.output(self.RA_coil_A_1_pin, w1)
             GPIO.output(self.RA_coil_A_2_pin, w2)
             GPIO.output(self.RA_coil_B_1_pin, w3)
