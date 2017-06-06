@@ -64,7 +64,7 @@ class functions_l298():
                 self.setStep(motor,1,0,1,0)
                 time.sleep(self.delay)
         
-        if self.motor == 1:
+        if motor == 1:
             self.drivingUpDown = False
         else:
             self.drivingLeftRight = False
