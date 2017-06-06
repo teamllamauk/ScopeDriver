@@ -8,8 +8,8 @@ class functions_l298():
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         
-        self.delay = delay #0.0055
-        self.steps = steps #10
+        self.delay = int(delay) #0.0055
+        self.steps = int(steps) #10
         
         self.drivingUpDown = False
         self.drivingLeftRight = False
