@@ -10,7 +10,7 @@ while True:
     print('Thread Drive 0, 0')
     t = threading.Thread(target=L298.driveMotor,args=(0,0))
     t.start()
-    time.sleep(2)
+    time.sleep(5)
     
     
     
@@ -42,3 +42,6 @@ while True:
     print('Half Drive 1, 0')
     L298.halfStepDriveMotor(1, 0)
     time.sleep(2)
+
+    print('End Loop')
+    time.sleep(10)
