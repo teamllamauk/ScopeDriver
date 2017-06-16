@@ -117,3 +117,5 @@ class functions_joypad():
                 else:
                     moveLeft = False
                     moveRight = False
+                    
+        return (moveUp, moveDown, moveLeft, moveRight, button)
