@@ -1,0 +1,27 @@
+Siderial
+
+  15 arcsec / second
+  15 arcsec = 15/3600 = 0.004167 deg
+
+--------------------
+
+Stepper
+
+  Half step mode > 0.9 deg / step
+  400 step / rotation
+
+--------------------
+
+Worm ratio
+
+  if 1:138 >>
+
+    55200 steps = 360 deg
+    153.33 = 1 deg
+    1 step = 0.00652 deg
+
+  if 1:144 >>
+
+    57600 steps = 360 deg
+    160 = 1 deg
+    1 step = 0.00625
