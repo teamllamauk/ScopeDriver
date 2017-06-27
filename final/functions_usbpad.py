@@ -17,7 +17,7 @@ import pygame
 
 class functions_joypad():
     
-     def __init__(self):
+    def __init__(self):
 
         axisUpDown = 1                          # Joystick axis to read for up / down position
         axisUpDownInverted = False              # Set this to True if up and down appear to be swapped
