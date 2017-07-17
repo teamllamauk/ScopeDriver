@@ -65,7 +65,7 @@ pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 # Function to handle pygame events
 def PygameHandler(events):
     
-    print('pygame')
+    #print('pygame')
     # Variables accessible outside this function
     global hadEvent
     global moveUp
@@ -93,6 +93,7 @@ def PygameHandler(events):
             if event.key == pygame.K_ESCAPE:
                 moveQuit = False
         elif event.type == pygame.JOYBUTTONDOWN:
+            print('button')
             button = event.button
             if button == 0:
                 delay = delay + 0.0001
