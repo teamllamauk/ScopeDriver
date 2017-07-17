@@ -111,15 +111,15 @@ def PygameHandler(events):
             if axisLeftRightInverted:
                 leftRight = -leftRight
                 # Determine Up / Down values
-                if upDown < -0.5:
+                #if upDown < -0.5:
                 #print 'Move Up'
-                elif upDown > 0.5:
+                #elif upDown > 0.5:
                 #print 'Move Down'          
                 
                 # Determine Left / Right values
-                if leftRight < -0.5:
+                #if leftRight < -0.5:
                 #print 'Move Left'
-                elif leftRight > 0.5:
+                #elif leftRight > 0.5:
                 #print 'Move Right'  
 
 
