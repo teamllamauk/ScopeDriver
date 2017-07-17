@@ -15,8 +15,8 @@ GPIO.setwarnings(False)
 
 delay = 0.0012
 
-#lcd.set_cursor_position(0,1)
-#lcd.write(delay)
+lcd.set_cursor_position(0,1)
+lcd.write(delay)
 
 #lcd.set_cursor_position(0,2)
 #lcd.write("X inc - Y dec")
