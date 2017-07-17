@@ -14,6 +14,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 delay = 0.0012
+motor = 0
 
 lcd.set_cursor_position(0,1)
 lcd.write(str(delay))
