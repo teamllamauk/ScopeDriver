@@ -1,30 +1,25 @@
-import RPi.GPIO as GPIO
-import time
 import dothat.backlight as backlight
 import dothat.lcd as lcd
+import RPi.GPIO as GPIO
+import time
 import pygame
+
+lcd.clear()
+backlight.rgb(255, 0, 0)
+
+lcd.set_cursor_position(0,0)
+lcd.write("Delay")
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 delay = 0.0012
 
+#lcd.set_cursor_position(0,1)
+#lcd.write(delay)
 
-
-
-
-lcd.clear()
-
-backlight.rgb(255, 0, 0)
-
-lcd.set_cursor_position(0,0)
-lcd.write("Delay")
-
-lcd.set_cursor_position(0,1)
-lcd.write(delay)
-
-lcd.set_cursor_position(0,2)
-lcd.write("X inc - Y dec")
+#lcd.set_cursor_position(0,2)
+#lcd.write("X inc - Y dec")
 
 coil_A_1_pin = 17
 coil_A_2_pin = 18
