@@ -13,7 +13,7 @@ lcd.write("Delay")
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-delay = 0.0012
+global delay = 0.0012
 motor = 0
 
 lcd.set_cursor_position(0,1)
@@ -70,6 +70,9 @@ def PygameHandler(events):
     global moveLeft
     global moveRight
     global moveQuit
+    
+    global delay
+    
     # Handle each event individually
     for event in events:
         if event.type == pygame.QUIT:
@@ -88,10 +91,10 @@ def PygameHandler(events):
                 moveQuit = False
         elif event.type == pygame.JOYBUTTONDOWN:
             button = event.button
-            #if button == 0:
-                #delay = delay + 0.0001
-            #elif button == 3:
-                #delay = delay - 0.0001
+            if button == 0:
+                delay = delay + 0.0001
+            elif button == 3:
+                delay = delay - 0.0001
                 
         elif event.type == pygame.JOYBUTTONUP:
             button = event.button
