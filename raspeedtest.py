@@ -135,7 +135,7 @@ while True:
     PygameHandler(pygame.event.get())
     
     lcd.set_cursor_position(0,1)
-    lcd.write(delay)
+    lcd.write(str(delay))
     
     setStep(1,0,0,0)
     time.sleep(delay)
