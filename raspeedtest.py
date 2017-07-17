@@ -132,10 +132,11 @@ def setStep(w1, w2, w3, w4):
     GPIO.output(coil_B_2_pin, w4)
 
 while True:
-    return = PygameHandler(pygame.event.get())
-    print(return)
-    #lcd.set_cursor_position(0,1)
-    #lcd.write(delay)
+    PygameHandler(pygame.event.get())
+    
+    lcd.set_cursor_position(0,1)
+    lcd.write(delay)
+    
     setStep(1,0,0,0)
     time.sleep(delay)
     setStep(1,0,1,0)
