@@ -89,9 +89,9 @@ def PygameHandler(events):
         elif event.type == pygame.JOYBUTTONDOWN:
             button = event.button
             if button == 0:
-                delay = delay + 0.0001
+                #delay = delay + 0.0001
             elif button == 3:
-                delay = delay - 0.0001
+                #delay = delay - 0.0001
                 
         elif event.type == pygame.JOYBUTTONUP:
             button = event.button
@@ -128,7 +128,8 @@ def setStep(w1, w2, w3, w4):
     GPIO.output(coil_B_2_pin, w4)
 
 while True:
-    PygameHandler(pygame.event.get())
+    return = PygameHandler(pygame.event.get())
+    print(return)
     #lcd.set_cursor_position(0,1)
     #lcd.write(delay)
     setStep(1,0,0,0)
