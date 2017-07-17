@@ -94,8 +94,12 @@ def PygameHandler(events):
             button = event.button
             if button == 0:
                 delay = delay + 0.0001
+                print('0')
+                print(delay)
             elif button == 3:
                 delay = delay - 0.0001
+                print('3')
+                print(delay)
                 
         elif event.type == pygame.JOYBUTTONUP:
             button = event.button
