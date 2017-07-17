@@ -64,6 +64,7 @@ pygame.display.set_caption("JoyBorg - Press [ESC] to quit")
 
 # Function to handle pygame events
 def PygameHandler(events):
+    
     print('pygame')
     # Variables accessible outside this function
     global hadEvent
