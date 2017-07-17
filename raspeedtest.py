@@ -133,8 +133,8 @@ def setStep(w1, w2, w3, w4):
 
 while True:
     PygameHandler(pygame.event.get())
-    lcd.set_cursor_position(0,1)
-    lcd.write(delay)
+    #lcd.set_cursor_position(0,1)
+    #lcd.write(delay)
     setStep(motor,1,0,0,0)
     time.sleep(delay)
     setStep(motor,1,0,1,0)
