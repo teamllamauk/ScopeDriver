@@ -88,9 +88,9 @@ def PygameHandler(events):
                 moveQuit = False
         elif event.type == pygame.JOYBUTTONDOWN:
             button = event.button
-            if button == 0:
+            #if button == 0:
                 #delay = delay + 0.0001
-            elif button == 3:
+            #elif button == 3:
                 #delay = delay - 0.0001
                 
         elif event.type == pygame.JOYBUTTONUP:
