@@ -29,10 +29,17 @@ coil_A_2_pin = 18
 coil_B_1_pin = 22
 coil_B_2_pin = 23
 
-btn_red_pin = 27
-btn_green_pin = 24
-btn_blue_pin = 9
-btn_yellow_pin = 19
+# Button Layout
+#
+#       X                   Blue
+#   Y       A           Green   Red
+#       B                   Yellow
+#
+
+btn_red_pin = 27        # A
+btn_green_pin = 24      # Y
+btn_blue_pin = 9        # X
+btn_yellow_pin = 19     # B
 btn_black_top_pin = 16
 btn_black_bottom_pin = 26
 
@@ -66,7 +73,7 @@ def btn_Callback(button_pin):
     
     global delay
     
-    if button_pin == btn_red_pin:
+    if button_pin == btn_blue_pin:
         delay = delay + 0.0001
     elif button_pin == btn_yellow_pin:
         delay = delay - 0.0001
