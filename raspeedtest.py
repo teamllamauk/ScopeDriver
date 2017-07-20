@@ -54,12 +54,16 @@ def btn_Callback(button_pin):
     
     global delay
     
-    print('btn callback - %s', button_pin)
+    #print('btn callback - %s', button_pin)
     
     if button_pin == btn_blue_pin:
         delay = delay + 0.0001
     elif button_pin == btn_yellow_pin:
         delay = delay - 0.0001
+        
+    print(delay)
+
+
 
 #GPIO inputs
 GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
