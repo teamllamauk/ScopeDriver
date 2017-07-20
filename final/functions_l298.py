@@ -15,6 +15,7 @@ class functions_l298():
         
         self.delay = float(delay) #0.0055
         self.steps = int(steps) #10
+        self.breakLoop = 0
 
 
     def setupGPIO(self, raA1, raA2, raB1, raB2, decA1, decA2, decB1, decB2):
@@ -44,12 +45,17 @@ class functions_l298():
 
     def updateDelay(self, delay):
         
-        self.delay = delay
+        self.delay = float(delay)
     
     def updateSteps(self, steps):
         
-        self.steps = steps
+        self.steps = int(steps)
         
+    def breakLoop(self, break):
+        
+        self.breakLoop = int(break)
+    
+    
     #Full step sequence
     def driveMotor(self, motor, direction):
            
@@ -69,6 +75,9 @@ class functions_l298():
                 count = count + 1
                 if count = self.steps:
                     break
+                
+                if self.breakLoop = 1:
+                    break
                                
                 
         else: # Reverse
@@ -86,6 +95,9 @@ class functions_l298():
                 
                 count = count + 1
                 if count = self.steps:
+                    break
+                
+                if self.breakLoop = 1:
                     break
                 
             
@@ -117,6 +129,9 @@ class functions_l298():
                 if count = self.steps:
                     break
                 
+                if self.breakLoop = 1:
+                    break
+                
         else: # Reverse
             for _ in range(self.steps):
                 #print('Loop 0')
@@ -139,6 +154,9 @@ class functions_l298():
                 
                 count = count + 1
                 if count = self.steps:
+                    break
+                
+                if self.breakLoop = 1:
                     break
                 
 
