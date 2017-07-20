@@ -42,7 +42,10 @@ class functions_l298():
         GPIO.setup(self.DEC_coil_B_1_pin, GPIO.OUT)
         GPIO.setup(self.DEC_coil_B_2_pin, GPIO.OUT)
 
-
+    def setDelay(self, delay):
+        
+        self.delay = delay
+        
     #Full step sequence
     def driveMotor(self, motor, direction):
            
