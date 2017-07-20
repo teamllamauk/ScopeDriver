@@ -79,10 +79,11 @@ def btn_Callback(button_pin):
     elif button_pin == btn_red_pin:
         # Start
         tracking = 0
+        print('Start')
     elif button_pin == btn_red_pin:
         # Stop
         L298.breakLoop(1)
-        print('Break Loop')
+        print('Stop')
     
 
 #GPIO inputs
@@ -106,6 +107,10 @@ GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, 
 
 #Main loop
 while True:
+
+    lcd.set_cursor_position(0,1)
+    lcd.write("{:.4f}".format(delay))
+    #lcd.write("{:.4f}".format(str(delay)))
     
     if tracking == 0:
         print('Drive 0, 1')
