@@ -49,6 +49,16 @@ GPIO.setup(coil_A_2_pin, GPIO.OUT)
 GPIO.setup(coil_B_1_pin, GPIO.OUT)
 GPIO.setup(coil_B_2_pin, GPIO.OUT)
 
+#Callback Functions
+def btn_Callback(button_pin):
+    
+    global delay
+    
+    if button_pin == btn_blue_pin:
+        delay = delay + 0.0001
+    elif button_pin == btn_yellow_pin:
+        delay = delay - 0.0001
+
 #GPIO inputs
 GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_red_pin, GPIO.RISING, callback=btn_Callback, bouncetime=200)
@@ -69,16 +79,6 @@ GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, bouncetime=200)
 
 #Functions
-def btn_Callback(button_pin):
-    
-    global delay
-    
-    if button_pin == btn_blue_pin:
-        delay = delay + 0.0001
-    elif button_pin == btn_yellow_pin:
-        delay = delay - 0.0001
-
-
 def setStep(w1, w2, w3, w4):
     GPIO.output(coil_A_1_pin, w1)
     GPIO.output(coil_A_2_pin, w2)
