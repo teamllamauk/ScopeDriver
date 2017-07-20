@@ -42,15 +42,20 @@ class functions_l298():
         GPIO.setup(self.DEC_coil_B_1_pin, GPIO.OUT)
         GPIO.setup(self.DEC_coil_B_2_pin, GPIO.OUT)
 
-    def setDelay(self, delay):
+    def updateDelay(self, delay):
         
         self.delay = delay
+    
+    def updateSteps(self, steps):
+        
+        self.steps = steps
         
     #Full step sequence
     def driveMotor(self, motor, direction):
            
         if direction == 1: # Forward
-            for _ in range(self.steps):
+            count = 0
+            while var == 1 :
                 #print('Loop 1')
                 self.setStep(motor,1,0,1,0)
                 time.sleep(self.delay)
@@ -60,8 +65,15 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(motor,1,0,0,1)
                 time.sleep(self.delay)
+                
+                count = count + 1
+                if count = self.steps:
+                    break
+                               
+                
         else: # Reverse
-            for _ in range(self.steps):
+            count = 0
+            while var == 1 :
                 #print('Loop 0')
                 self.setStep(motor,1,0,0,1)
                 time.sleep(self.delay)
@@ -70,14 +82,19 @@ class functions_l298():
                 self.setStep(motor,0,1,1,0)
                 time.sleep(self.delay)
                 self.setStep(motor,1,0,1,0)
-                time.sleep(self.delay)      
-
-
+                time.sleep(self.delay)
+                
+                count = count + 1
+                if count = self.steps:
+                    break
+                
+            
     #Half step squence
     def halfStepDriveMotor(self, motor, direction):
     
         if direction == 1: # Forward
-            for _ in range(self.steps):
+            count = 0
+            while var == 1 :
                 #print('Loop 1')
                 self.setStep(motor,1,0,0,0)
                 time.sleep(self.delay)
@@ -95,6 +112,11 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(motor,1,0,0,1)
                 time.sleep(self.delay)
+                
+                count = count + 1
+                if count = self.steps:
+                    break
+                
         else: # Reverse
             for _ in range(self.steps):
                 #print('Loop 0')
@@ -114,6 +136,11 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(motor,1,0,0,0)
                 time.sleep(self.delay)
+                
+                count = count + 1
+                if count = self.steps:
+                    break
+                
 
 
     # Function for step sequence
