@@ -2,7 +2,7 @@ import dothat.backlight as backlight
 import dothat.lcd as lcd
 import RPi.GPIO as GPIO
 import time
-import pygame
+
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -31,17 +31,17 @@ coil_B_2_pin = 23
 
 # Button Layout
 #
-#       X                   Blue
-#   Y       A           Green   Red
-#       B                   Yellow
+#       X               B1    -        Blue              Black Top
+#   Y       A                 -    Green   Red
+#       B               B2    -       Yellow             Black Bottom
 #
 
-btn_red_pin = 27        # A
-btn_green_pin = 24      # Y
-btn_blue_pin = 9        # X
-btn_yellow_pin = 19     # B
-btn_black_top_pin = 16
-btn_black_bottom_pin = 26
+btn_red_pin = 27            # A
+btn_green_pin = 24          # Y
+btn_blue_pin = 9            # X
+btn_yellow_pin = 19         # B
+btn_black_top_pin = 16      # B1
+btn_black_bottom_pin = 26   # B2
 
 #GPIO outputs
 GPIO.setup(coil_A_1_pin, GPIO.OUT)
@@ -60,7 +60,9 @@ def btn_Callback(button_pin):
         delay = delay + 0.0001
     elif button_pin == btn_yellow_pin:
         delay = delay - 0.0001
+     
         
+    
     print(delay)
 
 
