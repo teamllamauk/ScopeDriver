@@ -15,7 +15,6 @@ tracking = 1
 direction = 1
 
 
-
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
@@ -36,9 +35,6 @@ lcd.write("Dir: ")
 #lcd.write("{:.4f}".format(delay))
 
 
-
-lcd.set_cursor_position(0,2)
-lcd.write("X inc - Y dec")
 
 # Pin assignments
 RA_coil_A_1_pin = 17
@@ -69,10 +65,10 @@ btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
 #GPIO outputs
-GPIO.setup(coil_A_1_pin, GPIO.OUT)
-GPIO.setup(coil_A_2_pin, GPIO.OUT)
-GPIO.setup(coil_B_1_pin, GPIO.OUT)
-GPIO.setup(coil_B_2_pin, GPIO.OUT)
+#GPIO.setup(RA_coil_A_1_pin, GPIO.OUT)
+#GPIO.setup(RA_coil_A_2_pin, GPIO.OUT)
+#GPIO.setup(RA_coil_B_1_pin, GPIO.OUT)
+#GPIO.setup(RA_coil_B_2_pin, GPIO.OUT)
 
 #Callback Functions
 def btn_Callback(button_pin):
