@@ -78,6 +78,7 @@ def btn_Callback(button_pin):
         print(delay)
     elif button_pin == btn_green_pin:
         # Start
+        L298.breakTheLoop('0')
         tracking = 0
         print('Start')
     elif button_pin == btn_red_pin:
