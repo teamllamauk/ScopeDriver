@@ -61,7 +61,7 @@ class functions_l298():
            
         if direction == 1: # Forward
             count = 0
-            while var == 1 :
+            while True :
                 #print('Loop 1')
                 self.setStep(motor,1,0,1,0)
                 time.sleep(self.delay)
@@ -82,7 +82,7 @@ class functions_l298():
                 
         else: # Reverse
             count = 0
-            while var == 1 :
+            while True :
                 #print('Loop 0')
                 self.setStep(motor,1,0,0,1)
                 time.sleep(self.delay)
@@ -106,7 +106,7 @@ class functions_l298():
     
         if direction == 1: # Forward
             count = 0
-            while var == 1 :
+            while True :
                 #print('Loop 1')
                 self.setStep(motor,1,0,0,0)
                 time.sleep(self.delay)
@@ -133,7 +133,8 @@ class functions_l298():
                     break
                 
         else: # Reverse
-            for _ in range(self.steps):
+            count = 0
+            while True :
                 #print('Loop 0')
                 self.setStep(motor,1,0,0,1)
                 time.sleep(self.delay)
