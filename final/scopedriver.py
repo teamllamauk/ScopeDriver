@@ -107,20 +107,20 @@ GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, 
 
 #Main loop
 while True:
-    try:
-        lcd.set_cursor_position(0,1)
-        lcd.write("{:.4f}".format(delay))
-        #lcd.write("{:.4f}".format(str(delay)))
     
-        if tracking == 0:
-            print('Drive 0, 1')
-            L298.updateSteps(-1)
-            t = threading.Thread(target=L298.driveMotor,args=(0,1))
-            t.start()
-            tracking = 1
+    lcd.set_cursor_position(0,1)
+    lcd.write("{:.4f}".format(delay))
+    #lcd.write("{:.4f}".format(str(delay)))
+    
+    if tracking == 0:
+        print('Drive 0, 1')
+        L298.updateSteps(-1)
+        t = threading.Thread(target=L298.driveMotor,args=(0,1))
+        t.start()
+        tracking = 1
         
     
-        #print('End Loop')
-        #time.sleep(10)
-    except:
-        print('error')
+    #print('End Loop')
+    #time.sleep(10)
+    
+    print('error')
