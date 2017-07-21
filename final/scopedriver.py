@@ -82,7 +82,7 @@ def btn_Callback(button_pin):
         print('Start')
     elif button_pin == btn_red_pin:
         # Stop
-        L298.breakLoop('1')
+        L298.breakTheLoop('1')
         print('Stop')
     
 
