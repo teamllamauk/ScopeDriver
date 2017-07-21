@@ -45,12 +45,12 @@ coil_B_2_pin = 23
 #       B                   Yellow
 #
 
-btn_red_pin = 27        # A
-btn_green_pin = 24      # Y
-btn_blue_pin = 9        # X
-btn_yellow_pin = 19     # B
-btn_black_top_pin = 16
-btn_black_bottom_pin = 26
+btn_red_pin = 27            # A
+btn_green_pin = 24          # Y
+btn_blue_pin = 9            # X
+btn_yellow_pin = 19         # B
+btn_black_top_pin = 16      # purple wire
+btn_black_bottom_pin = 26   # grey wire
 
 #GPIO outputs
 GPIO.setup(coil_A_1_pin, GPIO.OUT)
