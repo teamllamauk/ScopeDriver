@@ -51,9 +51,9 @@ class functions_l298():
         
         self.steps = int(steps)
         
-    def breakLoop(self, break):
+    def breakLoop(self, breakloop):
         
-        self.breakLoop = int(break)
+        self.breakLoop = int(breakloop)
     
     
     #Full step sequence
