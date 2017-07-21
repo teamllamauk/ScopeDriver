@@ -73,10 +73,10 @@ class functions_l298():
                 time.sleep(self.delay)
                 
                 count = count + 1
-                if count = self.steps:
+                if count == self.steps:
                     break
                 
-                if self.breakLoop = 1:
+                if self.breakLoop == 1:
                     break
                                
                 
@@ -94,10 +94,10 @@ class functions_l298():
                 time.sleep(self.delay)
                 
                 count = count + 1
-                if count = self.steps:
+                if count == self.steps:
                     break
                 
-                if self.breakLoop = 1:
+                if self.breakLoop == 1:
                     break
                 
             
@@ -126,10 +126,10 @@ class functions_l298():
                 time.sleep(self.delay)
                 
                 count = count + 1
-                if count = self.steps:
+                if count == self.steps:
                     break
                 
-                if self.breakLoop = 1:
+                if self.breakLoop == 1:
                     break
                 
         else: # Reverse
@@ -153,10 +153,10 @@ class functions_l298():
                 time.sleep(self.delay)
                 
                 count = count + 1
-                if count = self.steps:
+                if count == self.steps:
                     break
                 
-                if self.breakLoop = 1:
+                if self.breakLoop == 1:
                     break
                 
 
