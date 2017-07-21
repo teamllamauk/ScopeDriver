@@ -8,13 +8,13 @@ import functions_l298
 
 global delay
 global tracking
+global direction # forward = 1, reverse = 0
 
 delay = 0.0012 #Step delay
 tracking = 1
+direction = 1
 
 
-L298 = functions_l298.functions_l298(delay, '1')
-L298.setupGPIO(17, 18, 22, 23, 1, 5, 6, 13)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -24,19 +24,35 @@ lcd.clear()
 backlight.rgb(255, 0, 0)
 
 lcd.set_cursor_position(0,0)
-lcd.write("Delay")
+lcd.write("Mode: ")
 
 lcd.set_cursor_position(0,1)
-lcd.write(str(delay))
+lcd.write("Delay: ")
+
+lcd.set_cursor_position(0,2)
+lcd.write("Dir: ")
+
+#lcd.set_cursor_position(7,1)
+#lcd.write("{:.4f}".format(delay))
+
+
 
 lcd.set_cursor_position(0,2)
 lcd.write("X inc - Y dec")
 
 # Pin assignments
-coil_A_1_pin = 17
-coil_A_2_pin = 18
-coil_B_1_pin = 22
-coil_B_2_pin = 23
+RA_coil_A_1_pin = 17
+RA_coil_A_2_pin = 18
+RA_coil_B_1_pin = 22
+RA_coil_B_2_pin = 23
+
+DEC_coil_A_1_pin = 1
+DEC_coil_A_2_pin = 5
+DEC_coil_B_1_pin = 6
+DEC_coil_B_2_pin = 13
+
+L298 = functions_l298.functions_l298(delay, '1')
+L298.setupGPIO(RA_coil_A_1_pin, RA_coil_A_2_pin, RA_coil_B_1_pin, RA_coil_B_2_pin, DEC_coil_A_1_pin, DEC_coil_A_2_pin, DEC_coil_B_1_pin, DEC_coil_B_2_pin)
 
 # Button Layout
 #
@@ -70,12 +86,12 @@ def btn_Callback(button_pin):
         # Slow Down
         delay = delay + 0.0001
         L298.updateDelay(delay)
-        print(delay)
+        #print(delay)
     elif button_pin == btn_yellow_pin:
         # Speed Up
         delay = delay - 0.0001
         L298.updateDelay(delay)
-        print(delay)
+        #print(delay)
     elif button_pin == btn_green_pin:
         # Start
         L298.breakTheLoop('0')
@@ -85,7 +101,16 @@ def btn_Callback(button_pin):
         # Stop
         L298.breakTheLoop('1')
         print('Stop')
-    
+    elif button_pin == btn_black_top_pin:
+        # Change direction
+        L298.breakTheLoop('1')
+        L298.breakTheLoop('0')
+        tracking = 0
+        if direction == 1:
+            direction = 0
+        elif
+            direction = 1
+        
 
 #GPIO inputs
 GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -109,14 +134,26 @@ GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, 
 #Main loop
 while True:
     
-    lcd.set_cursor_position(0,1)
+    lcd.set_cursor_position(6,0)
+    if tracking == 1:
+        lcd.write("Running")
+    elif:
+        lcd.write("Stopped")
+        
+    lcd.set_cursor_position(7,1)
     lcd.write("{:.4f}".format(delay))
-    #lcd.write("{:.4f}".format(str(delay)))
+    
+    lcd.set_cursor_position(5,2)
+    if direction == 1:
+        lcd.write("Forward")
+    elif:
+        lcd.write("Reverse")
+    
     
     if tracking == 0:
         print('Drive 0, 1')
         L298.updateSteps(-1)
-        t = threading.Thread(target=L298.driveMotor,args=(0,1))
+        t = threading.Thread(target=L298.halfStepDriveMotor,args=(0,direction))
         t.start()
         tracking = 1
         
