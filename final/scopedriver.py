@@ -76,7 +76,7 @@ def btn_Callback(button_pin):
         delay = delay - 0.0001
         L298.updateDelay(delay)
         print(delay)
-    elif button_pin == btn_red_pin:
+    elif button_pin == btn_green_pin:
         # Start
         tracking = 0
         print('Start')
