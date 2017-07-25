@@ -77,6 +77,7 @@ class functions_l298():
                     break
                 
                 if self.breakLoop == 1:
+                    self.breakLoop = 0
                     break
                                
                 
@@ -98,6 +99,7 @@ class functions_l298():
                     break
                 
                 if self.breakLoop == 1:
+                    self.breakLoop = 0
                     break
                 
             
@@ -130,6 +132,7 @@ class functions_l298():
                     break
                 
                 if self.breakLoop == 1:
+                    self.breakLoop = 0
                     break
                 
         else: # Reverse
@@ -158,6 +161,7 @@ class functions_l298():
                     break
                 
                 if self.breakLoop == 1:
+                    self.breakLoop = 0
                     break
                 
 
