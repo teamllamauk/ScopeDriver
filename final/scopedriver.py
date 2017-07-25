@@ -104,7 +104,7 @@ def btn_Callback(button_pin):
         tracking = 0
         if direction == 1:
             direction = 0
-        elif
+        else:
             direction = 1
         
 
@@ -133,7 +133,7 @@ while True:
     lcd.set_cursor_position(6,0)
     if tracking == 1:
         lcd.write("Running")
-    elif:
+    else:
         lcd.write("Stopped")
         
     lcd.set_cursor_position(7,1)
@@ -142,7 +142,7 @@ while True:
     lcd.set_cursor_position(5,2)
     if direction == 1:
         lcd.write("Forward")
-    elif:
+    else:
         lcd.write("Reverse")
     
     
