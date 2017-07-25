@@ -92,10 +92,15 @@ def btn_Callback(button_pin):
     elif button_pin == btn_green_pin:
         # Start
         L298.breakTheLoop('0')
-        tracking = 0
+        if tracking == 0:
+            L298.updateSteps(-1)
+            t = threading.Thread(target=L298.halfStepDriveMotor,args=(0,direction))
+            t.start()
+            tracking = 1
         print('Start')
     elif button_pin == btn_red_pin:
         # Stop
+        tracking = 0
         L298.breakTheLoop('1')
         print('Stop')
     elif button_pin == btn_black_top_pin:
@@ -103,10 +108,16 @@ def btn_Callback(button_pin):
         L298.breakTheLoop('1')
         L298.breakTheLoop('0')
         tracking = 0
+        
         if direction == 1:
             direction = 0
         else:
             direction = 1
+        
+        L298.updateSteps(-1)
+        t = threading.Thread(target=L298.halfStepDriveMotor,args=(0,direction))
+        t.start()
+        tracking = 1
         
 
 #GPIO inputs
@@ -147,12 +158,10 @@ while True:
         lcd.write("Reverse")
     
     
-    if tracking == 0:
-        print('Drive 0, 1')
-        L298.updateSteps(-1)
-        t = threading.Thread(target=L298.halfStepDriveMotor,args=(0,direction))
-        t.start()
-        tracking = 1
+    
+        #print('Drive 0, 1')
+        
+        #tracking = 1
         
     
     #print('End Loop')
