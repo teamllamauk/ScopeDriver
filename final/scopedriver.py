@@ -75,6 +75,7 @@ def btn_Callback(button_pin):
     
     global delay
     global tracking
+    global direction
     
     #print('btn callback - %s', button_pin)
     
