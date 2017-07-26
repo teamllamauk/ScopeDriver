@@ -50,7 +50,7 @@ class functions_l298():
                 self.setStep(0, 1, 0, 1)
                 time.sleep(self.delay)
                 self.setStep(1, 0, 0, 1)
-                time.sleep(self.delay)               
+                time.sleep(self.delay)
             else:  # Reverse            
                 self.setStep(1, 0, 0, 1)
                 time.sleep(self.delay)
@@ -68,7 +68,7 @@ class functions_l298():
             if self.breakLoop == 1:
                 self.breakLoop = 0
                 break
-            
+
     # Half step squence
     def halfStepDriveMotor(self):
         count = 0
@@ -123,4 +123,3 @@ class functions_l298():
         GPIO.output(self.coil_A_2_pin, a2)
         GPIO.output(self.coil_B_1_pin, b1)
         GPIO.output(self.coil_B_2_pin, b2)
-
