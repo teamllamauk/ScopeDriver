@@ -41,7 +41,7 @@ class functions_l298():
     # Full step sequence
     def driveMotor(self):
         count = 0
-        while True:   
+        while True:
             if self.direction == 1:  # Forward
                 self.setStep(1,0,1,0)
                 time.sleep(self.delay)
