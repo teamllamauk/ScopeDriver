@@ -8,9 +8,9 @@ import functions_l298
 
 global delay
 global tracking
-global direction # forward = 1, reverse = 0
+global direction  # forward = 1, reverse = 0
 
-delay = 0.0012 #Step delay
+delay = 0.0012  # Step delay
 running = 1
 direction = 1
 
@@ -18,35 +18,35 @@ direction = 1
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-#Setup LCD
+# Setup LCD
 lcd.clear()
 backlight.rgb(255, 0, 0)
 
-lcd.set_cursor_position(0,0)
+lcd.set_cursor_position(0, 0)
 lcd.write("Mode: ")
 
-lcd.set_cursor_position(0,1)
+lcd.set_cursor_position(0, 1)
 lcd.write("Delay: ")
 
-lcd.set_cursor_position(0,2)
+lcd.set_cursor_position(0, 2)
 lcd.write("Dir: ")
 
 # Pin assignments
-RA_coil_A_1_pin = 17
-RA_coil_A_2_pin = 18
-RA_coil_B_1_pin = 22
-RA_coil_B_2_pin = 23
+RA_A1_pin = 17
+RA_A2_pin = 18
+RA_B1_pin = 22
+RA_B2_pin = 23
 
-DEC_coil_A_1_pin = 1
-DEC_coil_A_2_pin = 5
-DEC_coil_B_1_pin = 6
-DEC_coil_B_2_pin = 13
+DEC_A1_pin = 1
+DEC_A2_pin = 5
+DEC_B1_pin = 6
+DEC_B2_pin = 13
 
 L298Motor1 = functions_l298.functions_l298(delay, '1')
-L298Motor1.setupGPIO(RA_coil_A_1_pin, RA_coil_A_2_pin, RA_coil_B_1_pin, RA_coil_B_2_pin)
+L298Motor1.setupGPIO(RA_A1_pin, RA_A2_pin, RA_B1_pin, RA_B2_pin)
 
 L298Motor2 = functions_l298.functions_l298(delay, '1')
-L298Motor2.setupGPIO(DEC_coil_A_1_pin, DEC_coil_A_2_pin, DEC_coil_B_1_pin, DEC_coil_B_2_pin)
+L298Motor2.setupGPIO(DEC_A1_pin, DEC_A2_pin, DEC_B1_pin, DEC_B2_pin)
 
 
 # Button Layout
@@ -65,7 +65,8 @@ btn_black_bottom_pin = 26   # grey wire
 
 #Callback Functions
 def btn_Callback(button_pin):
-    
+
+
     global delay
     global running
     global direction
@@ -81,9 +82,9 @@ def btn_Callback(button_pin):
         # Speed Up
         delay = delay - 0.0001
         L298Motor1.updateDelay(delay)
-        
+
     elif button_pin == btn_green_pin:
-        # Start        
+        # Start
         if running == 0:
             L298Motor1.updateSteps(-1)
             L298Motor1.motorDirection(direction)
@@ -104,6 +105,7 @@ def btn_Callback(button_pin):
             direction = 1
                
         L298Motor1.motorDirection(direction)
+
 
 #GPIO inputs
 GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -141,5 +143,3 @@ while True:
         lcd.write("Forward")
     else:
         lcd.write("Reverse")
-
-
