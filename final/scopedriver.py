@@ -63,21 +63,21 @@ btn_yellow_pin = 19         # B
 btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
-#Callback Functions
-def btn_Callback(button_pin):
 
+# Callback Functions
+def btn_Callback(button_pin):
 
     global delay
     global running
     global direction
-    
+
     #print('btn callback - %s', button_pin)
-    
+
     if button_pin == btn_blue_pin:
         # Slow Down
         delay = delay + 0.0001
         L298Motor1.updateDelay(delay)
-        
+
     elif button_pin == btn_yellow_pin:
         # Speed Up
         delay = delay - 0.0001
@@ -98,7 +98,7 @@ def btn_Callback(button_pin):
         L298Motor1.breakTheLoop('1')
         print('Stop')
     elif button_pin == btn_black_top_pin:
-        # Change direction        
+        # Change direction
         if direction == 1:
             direction = 0
         else:
@@ -128,17 +128,17 @@ GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, 
 
 #Main loop
 while True:
-    
-    lcd.set_cursor_position(6,0)
+
+    lcd.set_cursor_position(6, 0)
     if running == 1:
         lcd.write("Running")
     else:
         lcd.write("Stopped")
-        
-    lcd.set_cursor_position(7,1)
+
+    lcd.set_cursor_position(7, 1)
     lcd.write("{:.4f}".format(delay))
-    
-    lcd.set_cursor_position(5,2)
+
+    lcd.set_cursor_position(5, 2)
     if direction == 1:
         lcd.write("Forward")
     else:
