@@ -77,8 +77,7 @@ class functions_l298():
         
         count = 0
         while True :
-    
-            if self.direction == 1: # Forward            
+            if self.direction == 1: # Forward
                 self.setStep(1,0,0,0)
                 time.sleep(self.delay)
                 self.setStep(1,0,1,0)
@@ -112,7 +111,7 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(1,0,0,0)
                 time.sleep(self.delay)
-                
+            
             count = count + 1
             if count == self.steps:
                 break
