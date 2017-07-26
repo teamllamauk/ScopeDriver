@@ -74,7 +74,6 @@ class functions_l298():
             
     #Half step squence
     def halfStepDriveMotor(self):
-        
         count = 0
         while True :
             if self.direction == 1: # Forward
@@ -94,7 +93,7 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(1,0,0,1)
                 time.sleep(self.delay
-            else:
+            else: # Reverse            
                 self.setStep(1,0,0,1)
                 time.sleep(self.delay)
                 self.setStep(0,0,0,1)
