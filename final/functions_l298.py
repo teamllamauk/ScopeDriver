@@ -7,7 +7,7 @@ class functions_l298():
     def __init__(self, delay, steps):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
-        
+
         self.delay = float(delay)  # 0.0055
         self.steps = int(steps)  # 10
         self.breakLoop = 0  # 1 = escape from thread
@@ -39,13 +39,12 @@ class functions_l298():
     def breakTheLoop(self, breakloop):
         self.breakLoop = int(breakloop)
 
-
     # Full step sequence
     def driveMotor(self):
                 
         count = 0
-        while True :   
-            if self.direction == 1:  # Forward            
+        while True:   
+            if self.direction == 1:  # Forward
                 self.setStep(1,0,1,0)
                 time.sleep(self.delay)
                 self.setStep(0,1,1,0)
@@ -73,11 +72,11 @@ class functions_l298():
                 break
                 
             
-    #Half step squence
+    # Half step squence
     def halfStepDriveMotor(self):
         count = 0
-        while True :
-            if self.direction == 1: # Forward
+        while True:
+            if self.direction == 1:  # Forward
                 self.setStep(1,0,0,0)
                 time.sleep(self.delay)
                 self.setStep(1,0,1,0)
@@ -94,7 +93,6 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(1,0,0,1)
                 time.sleep(self.delay
-
             else:  # Reverse            
                 self.setStep(1,0,0,1)
                 time.sleep(self.delay)
@@ -116,7 +114,7 @@ class functions_l298():
             count = count + 1
             if count == self.steps:
                 break
-                
+
             if self.breakLoop == 1:
                 self.breakLoop = 0
                 break
