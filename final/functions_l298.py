@@ -28,19 +28,18 @@ class functions_l298():
 
     def updateDelay(self, delay):
         self.delay = float(delay)
-    
+
     def updateSteps(self, steps):
         self.steps = int(steps)
-    
+
     def motorDirection(self, direction):
         self.direction = int(direction)
-    
+
     def breakTheLoop(self, breakloop):
         self.breakLoop = int(breakloop)
 
     # Full step sequence
     def driveMotor(self):
-                
         count = 0
         while True:   
             if self.direction == 1:  # Forward
@@ -61,15 +60,14 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(1,0,1,0)
                 time.sleep(self.delay)
-                
+
             count = count + 1
             if count == self.steps:
                 break
-                
+
             if self.breakLoop == 1:
                 self.breakLoop = 0
                 break
-                
             
     # Half step squence
     def halfStepDriveMotor(self):
@@ -109,7 +107,7 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(1,0,0,0)
                 time.sleep(self.delay)
-            
+
             count = count + 1
             if count == self.steps:
                 break
@@ -120,7 +118,7 @@ class functions_l298():
 
     # Function for step sequence
     def setStep(self, a1, a2, b1, b2):
-    
+
         GPIO.output(self.coil_A_1_pin, a1)
         GPIO.output(self.coil_A_2_pin, a2)
         GPIO.output(self.coil_B_1_pin, b1)
