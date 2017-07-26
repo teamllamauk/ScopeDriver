@@ -14,13 +14,12 @@ class functions_l298():
         self.direction = 1  # Forward = 1, Reverse = 0
 
     def setupGPIO(self, pinA1, pinA2, pinB1, pinB2):
-        
         # Motor Pins
         self.coil_A_1_pin = pinA1  # 17
         self.coil_A_2_pin = pinA2  # 18
         self.coil_B_1_pin = pinB1  # 22
         self.coil_B_2_pin = pinB2  # 23
-        
+
         # Setup GPIO pins
         GPIO.setup(self.coil_A_1_pin, GPIO.OUT)
         GPIO.setup(self.coil_A_2_pin, GPIO.OUT)
@@ -126,3 +125,4 @@ class functions_l298():
         GPIO.output(self.coil_A_2_pin, a2)
         GPIO.output(self.coil_B_1_pin, b1)
         GPIO.output(self.coil_B_2_pin, b2)
+
