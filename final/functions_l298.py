@@ -8,18 +8,18 @@ class functions_l298():
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         
-        self.delay = float(delay) #0.0055
-        self.steps = int(steps) #10
-        self.breakLoop = 0 # 1 = escape from thread
-        self.direction = 1 # Forward = 1, Reverse = 0
+        self.delay = float(delay)  # 0.0055
+        self.steps = int(steps)  # 10
+        self.breakLoop = 0  # 1 = escape from thread
+        self.direction = 1  # Forward = 1, Reverse = 0
 
     def setupGPIO(self, pinA1, pinA2, pinB1, pinB2):
         
         # Motor Pins
-        self.coil_A_1_pin = pinA1 #17
-        self.coil_A_2_pin = pinA2 #18
-        self.coil_B_1_pin = pinB1 #22
-        self.coil_B_2_pin = pinB2 #23
+        self.coil_A_1_pin = pinA1  # 17
+        self.coil_A_2_pin = pinA2  # 18
+        self.coil_B_1_pin = pinB1  # 22
+        self.coil_B_2_pin = pinB2  # 23
         
         # Setup GPIO pins
         GPIO.setup(self.coil_A_1_pin, GPIO.OUT)
@@ -38,14 +38,14 @@ class functions_l298():
     
     def breakTheLoop(self, breakloop):
         self.breakLoop = int(breakloop)
-    
-    
-    #Full step sequence
+
+
+    # Full step sequence
     def driveMotor(self):
                 
         count = 0
         while True :   
-            if self.direction == 1: # Forward            
+            if self.direction == 1:  # Forward            
                 self.setStep(1,0,1,0)
                 time.sleep(self.delay)
                 self.setStep(0,1,1,0)
