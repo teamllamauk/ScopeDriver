@@ -90,7 +90,7 @@ class functions_l298():
                 time.sleep(self.delay)
                 self.setStep(1, 0, 0, 1)
                 time.sleep(self.delay)
-            else:  # Reverse            
+            else:  # Reverse
                 self.setStep(1, 0, 0, 1)
                 time.sleep(self.delay)
                 self.setStep(0, 0, 0, 1)
