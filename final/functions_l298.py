@@ -44,8 +44,7 @@ class functions_l298():
                 
         count = 0
         while True :   
-            if self.direction == 1: # Forward
-            
+            if self.direction == 1: # Forward            
                 #print('Loop 1')
                 self.setStep(1,0,1,0)
                 time.sleep(self.delay)
@@ -54,10 +53,8 @@ class functions_l298():
                 self.setStep(0,1,0,1)
                 time.sleep(self.delay)
                 self.setStep(1,0,0,1)
-                time.sleep(self.delay)                              
-                
-            else: # Reverse
-            
+                time.sleep(self.delay)               
+            else: # Reverse            
                 #print('Loop 0')
                 self.setStep(1,0,0,1)
                 time.sleep(self.delay)
@@ -83,8 +80,7 @@ class functions_l298():
         count = 0
         while True :
     
-            if self.direction == 1: # Forward
-            
+            if self.direction == 1: # Forward            
                 self.setStep(1,0,0,0)
                 time.sleep(self.delay)
                 self.setStep(1,0,1,0)
@@ -100,10 +96,8 @@ class functions_l298():
                 self.setStep(0,0,0,1)
                 time.sleep(self.delay)
                 self.setStep(1,0,0,1)
-                time.sleep(self.delay
-                
+                time.sleep(self.delay                
             else: # Reverse
-
                 self.setStep(1,0,0,1)
                 time.sleep(self.delay)
                 self.setStep(0,0,0,1)
