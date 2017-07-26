@@ -71,7 +71,7 @@ def btn_Callback(button_pin):
     global running
     global direction
 
-    #print('btn callback - %s', button_pin)
+    # print('btn callback - %s', button_pin)
 
     if button_pin == btn_blue_pin:
         # Slow Down
@@ -103,11 +103,11 @@ def btn_Callback(button_pin):
             direction = 0
         else:
             direction = 1
-               
+
         L298Motor1.motorDirection(direction)
 
 
-#GPIO inputs
+# GPIO inputs
 GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_red_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
@@ -126,7 +126,7 @@ GPIO.add_event_detect(btn_black_top_pin, GPIO.RISING, callback=btn_Callback, bou
 GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-#Main loop
+# Main loop
 while True:
 
     lcd.set_cursor_position(6, 0)
