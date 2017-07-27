@@ -37,6 +37,8 @@ class functions_l298():
 
     def breakTheLoop(self, breakloop):
         self.breakLoop = int(breakloop)
+        print('def brake loop')
+        print(str(breakloop))
 
     # Full step sequence
     def driveMotor(self):
