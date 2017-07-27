@@ -11,7 +11,7 @@ global tracking
 global direction  # forward = 1, reverse = 0
 
 delay = 0.0012  # Step delay
-running = 1
+running = 0
 direction = 1
 
 
