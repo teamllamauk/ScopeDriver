@@ -91,7 +91,7 @@ def btn_Callback(button_pin):
             t = threading.Thread(target=L298Motor1.halfStepDriveMotor)
             t.start()
             running = 1
-        print('Start')
+            print('Start')
     elif button_pin == btn_red_pin:
         # Stop
         running = 0
