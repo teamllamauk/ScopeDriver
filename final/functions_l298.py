@@ -71,9 +71,11 @@ class functions_l298():
 
     # Half step squence
     def halfStepDriveMotor(self):
+        print('half')
         count = 0
         while True:
             if self.direction == 1:  # Forward
+                print('loop forward')
                 self.setStep(1, 0, 0, 0)
                 time.sleep(self.delay)
                 self.setStep(1, 0, 1, 0)
@@ -91,6 +93,7 @@ class functions_l298():
                 self.setStep(1, 0, 0, 1)
                 time.sleep(self.delay)
             else:  # Reverse
+                print('loop reverse')
                 self.setStep(1, 0, 0, 1)
                 time.sleep(self.delay)
                 self.setStep(0, 0, 0, 1)
@@ -110,10 +113,12 @@ class functions_l298():
 
             count = count + 1
             if count == self.steps:
+                print('break steps')
                 break
 
             if self.breakLoop == 1:
                 self.breakLoop = 0
+                print('break loop')
                 break
 
     # Function for step sequence
