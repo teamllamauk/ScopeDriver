@@ -42,11 +42,11 @@ DEC_A2_pin = 5
 DEC_B1_pin = 6
 DEC_B2_pin = 13
 
-L298Motor2 = functions_l298.functions_l298(delay, '1')
-L298Motor2.setupGPIO(RA_A1_pin, RA_A2_pin, RA_B1_pin, RA_B2_pin)
-
 L298Motor1 = functions_l298.functions_l298(delay, '1')
-L298Motor1.setupGPIO(DEC_A1_pin, DEC_A2_pin, DEC_B1_pin, DEC_B2_pin)
+L298Motor1.setupGPIO(RA_A1_pin, RA_A2_pin, RA_B1_pin, RA_B2_pin)
+
+L298Motor2 = functions_l298.functions_l298(delay, '1')
+L298Motor2.setupGPIO(DEC_A1_pin, DEC_A2_pin, DEC_B1_pin, DEC_B2_pin)
 
 
 # Button Layout
@@ -88,14 +88,19 @@ def btn_Callback(button_pin):
         if running == 0:
             L298Motor1.updateSteps(-1)
             L298Motor1.motorDirection(direction)
-            t = threading.Thread(target=L298Motor1.halfStepDriveMotor)
-            t.start()
+            t1 = threading.Thread(target=L298Motor1.halfStepDriveMotor)
+            t1.start()
+            L298Motor2.updateSteps(-1)
+            L298Motor2.motorDirection(direction)
+            t2 = threading.Thread(target=L298Motor2.halfStepDriveMotor)
+            t2.start()
             running = 1
             print('Start')
     elif button_pin == btn_red_pin:
         # Stop
         running = 0
         L298Motor1.breakTheLoop('1')
+        L298Motor2.breakTheLoop('1')
         print('Stop')
     elif button_pin == btn_black_top_pin:
         # Change direction
@@ -105,6 +110,7 @@ def btn_Callback(button_pin):
             direction = 1
 
         L298Motor1.motorDirection(direction)
+        L298Motor2.motorDirection(direction)
 
 
 # GPIO inputs
