@@ -37,8 +37,6 @@ class functions_l298():
         self.direction = int(direction)
 
     def breakTheLoop(self, breakloop):
-        print('def brake loop')
-        print(str(breakloop))
         self.breakLoop = int(breakloop)
 
     # Full step sequence
