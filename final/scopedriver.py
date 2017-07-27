@@ -42,11 +42,11 @@ DEC_A2_pin = 5
 DEC_B1_pin = 6
 DEC_B2_pin = 13
 
-L298Motor1 = functions_l298.functions_l298(delay, '1')
-L298Motor1.setupGPIO(RA_A1_pin, RA_A2_pin, RA_B1_pin, RA_B2_pin)
-
 L298Motor2 = functions_l298.functions_l298(delay, '1')
-L298Motor2.setupGPIO(DEC_A1_pin, DEC_A2_pin, DEC_B1_pin, DEC_B2_pin)
+L298Motor2.setupGPIO(RA_A1_pin, RA_A2_pin, RA_B1_pin, RA_B2_pin)
+
+L298Motor1 = functions_l298.functions_l298(delay, '1')
+L298Motor1.setupGPIO(DEC_A1_pin, DEC_A2_pin, DEC_B1_pin, DEC_B2_pin)
 
 
 # Button Layout
