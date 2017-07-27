@@ -86,10 +86,12 @@ def btn_Callback(button_pin):
     elif button_pin == btn_green_pin:
         # Start
         if running == 0:
+            L298Motor1.breakTheLoop('0')        
             L298Motor1.updateSteps(-1)
             L298Motor1.motorDirection(direction)
             t1 = threading.Thread(target=L298Motor1.halfStepDriveMotor)
             t1.start()
+            L298Motor2.breakTheLoop('0')
             L298Motor2.updateSteps(-1)
             L298Motor2.motorDirection(direction)
             t2 = threading.Thread(target=L298Motor2.halfStepDriveMotor)
