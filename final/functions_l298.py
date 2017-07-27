@@ -12,8 +12,6 @@ class functions_l298():
         self.steps = int(steps)  # 10
         self.breakLoop = 0  # 1 = escape from thread
         self.direction = 1  # Forward = 1, Reverse = 0
-        print('init')
-        print(str(self.breakLoop))
 
     def setupGPIO(self, pinA1, pinA2, pinB1, pinB2):
         # Motor Pins
@@ -29,7 +27,8 @@ class functions_l298():
         GPIO.setup(self.coil_B_2_pin, GPIO.OUT)
 
     def updateDelay(self, delay):
-        self.delay = float(delay)
+        if self.delay > 1:
+            self.delay = float(delay)
 
     def updateSteps(self, steps):
         self.steps = int(steps)
@@ -75,13 +74,9 @@ class functions_l298():
 
     # Half step squence
     def halfStepDriveMotor(self):
-        print('half')
-        print('.')
-        print(str(self.breakLoop))
         count = 0
         while True:
             if self.direction == 1:  # Forward
-                print('loop forward')
                 self.setStep(1, 0, 0, 0)
                 time.sleep(self.delay)
                 self.setStep(1, 0, 1, 0)
@@ -99,7 +94,6 @@ class functions_l298():
                 self.setStep(1, 0, 0, 1)
                 time.sleep(self.delay)
             else:  # Reverse
-                print('loop reverse')
                 self.setStep(1, 0, 0, 1)
                 time.sleep(self.delay)
                 self.setStep(0, 0, 0, 1)
@@ -119,13 +113,9 @@ class functions_l298():
 
             count = count + 1
             if count == self.steps:
-                print('break steps')
                 break
-            print('..')
-            print(str(self.breakLoop))
             if self.breakLoop == 1:
                 self.breakLoop = 0
-                print('break loop')
                 break
 
     # Function for step sequence
