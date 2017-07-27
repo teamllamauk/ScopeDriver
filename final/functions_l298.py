@@ -117,7 +117,7 @@ class functions_l298():
             if count == self.steps:
                 print('break steps')
                 break
-
+            print(str(self.breakLoop))
             if self.breakLoop == 1:
                 self.breakLoop = 0
                 print('break loop')
