@@ -1,3 +1,9 @@
+# Useful links
+# https://www.pololu.com/product/2128
+# http://howtomechatronics.com/tutorials/arduino/how-to-control-stepper-motor-with-a4988-driver-and-arduino/
+# Vref = 0.870v for 1.6A
+
+
 #import wiringpi2 as wiringpi
 #import time
 
