@@ -32,9 +32,13 @@ count = 0
 while True:
     
     GPIO.output(18, 1)
-    time.sleep(0.0001)
+    time.sleep(0.001)
     GPIO.output(18, 0)
     time.sleep(delay)
+    
+    count = count + 1
+    
+    print(count)
     
     if count == 20:
         break
