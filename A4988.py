@@ -26,7 +26,7 @@ GPIO.setwarnings(False)
 GPIO.setup(18, GPIO.OUT)
 GPIO.output(18, 0)
 
-delay = 0.0055
+delay = 0.05
 count = 0
 
 while True:
