@@ -32,9 +32,9 @@ count = 0
 while True:
     
     GPIO.output(18, 1)
-    time.sleep(0.001)
+    time.sleep(1)
     GPIO.output(18, 0)
-    time.sleep(delay)
+    time.sleep(1)
     
     count = count + 1
     
