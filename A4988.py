@@ -26,15 +26,18 @@ GPIO.setwarnings(False)
 GPIO.setup(18, GPIO.OUT)
 GPIO.output(18, 0)
 
-delay = 0.05
+stepTime = 0.05
+delay = stepTime / 2
 count = 0
 
 while True:
     
     GPIO.output(18, 1)
     time.sleep(1)
+    #time.sleep(delay)
     GPIO.output(18, 0)
     time.sleep(1)
+    #time.sleep(delay)
     
     count = count + 1
     
