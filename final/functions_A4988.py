@@ -46,9 +46,9 @@ class functions_A4988():
         while True:
             
             GPIO.output(self.pin_Step, 1)    
-            time.sleep(delay / 2)
+            time.sleep(self.delay / 2)
             GPIO.output(self.pin_Step, 0)
-            time.sleep(delay / 2)
+            time.sleep(self.delay / 2)
             
             count = count + 1
             if count == self.steps:
