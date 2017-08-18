@@ -27,9 +27,11 @@ GPIO.setup(18, GPIO.OUT)
 GPIO.output(18, 0)
 
 #stepTime = 0.05
-stepTime = 1
+stepTime = 2
 delay = stepTime / 2
 count = 0
+
+print(delay)
 
 while True:
     
