@@ -26,7 +26,6 @@ def get_addr(ifname):
     except IOError:
         return 'Not Found!'
 
-
 GPIO.setmode(GPIO.BCM)  
 
 lcd.clear()
