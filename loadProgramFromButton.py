@@ -65,10 +65,10 @@ lcd.write(get_addr('wlan0'))
 while True:
 #try:  
 #GPIO.wait_for_edge(btn_black_top_pin, GPIO.FALLING)
-if loadOnButton = 1:
-    print("Button Pressed")
-    subprocess.call(["sudo", "python", "/home/pi/ScopeDriver/final/scopedriver.py"])
-    break
+    if loadOnButton = 1:
+        print("Button Pressed")
+        subprocess.call(["sudo", "python", "/home/pi/ScopeDriver/final/scopedriver.py"])
+        break
 # except KeyboardInterrupt:  
 #    GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
 #GPIO.cleanup()           # clean up GPIO on normal exit  
