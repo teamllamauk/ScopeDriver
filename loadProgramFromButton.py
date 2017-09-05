@@ -44,9 +44,10 @@ btn_black_top_pin = 16
 
 GPIO.setup(btn_black_top_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)  
  
-try:  
-    GPIO.wait_for_edge(btn_black_top_pin, GPIO.FALLING)  
-    subprocess.call(["sudo", "python", "/home/pi/ScopeDriver/final/scopedriver.py"])
-except KeyboardInterrupt:  
-    GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
+#try:  
+GPIO.wait_for_edge(btn_black_top_pin, GPIO.FALLING)
+print("Button Pressed")
+subprocess.call(["sudo", "python", "/home/pi/ScopeDriver/final/scopedriver.py"])
+# except KeyboardInterrupt:  
+#    GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
 GPIO.cleanup()           # clean up GPIO on normal exit  
