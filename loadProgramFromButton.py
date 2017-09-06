@@ -42,7 +42,7 @@ def get_addr(ifname):
             struct.pack('256s', ifname[:15].encode('utf-8'))
         )[20:24])
     except IOError:
-        return 'Not Found!'
+        return 'IP Not Found!'
 
 
 def btn_Callback(button_pin):
@@ -59,10 +59,11 @@ def btn_Callback(button_pin):
 GPIO.setup(btn_black_top_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_black_top_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-lcd.set_cursor_position(0, 2)
+
 
 
 while True:
+    lcd.set_cursor_position(0, 2)
     lcd.write(get_addr('wlan0'))
 #try:  
 #GPIO.wait_for_edge(btn_black_top_pin, GPIO.FALLING)
