@@ -49,9 +49,7 @@ menu = Menu(
             }
         }
     },
-    lcd=lcd,
-    idle_handler=my_invader,
-    idle_timeout=30,
+    lcd=lcd,    
     input_handler=Text())
 
 """
