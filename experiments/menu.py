@@ -9,11 +9,11 @@ import dothat.touch as nav
 from dot3k.menu import Menu, MenuOption
 
 # Add the root examples dir so Python can find the plugins
-sys.path.append('../../')
+sys.path.append('../../../')
 
 #from plugins.clock import Clock
 #from plugins.graph import IPAddress, GraphTemp, GraphCPU, GraphNetSpeed
-#from plugins.text import Text
+from plugins.text import Text
 #from plugins.utils import Backlight, Contrast
 #from plugins.wlan import Wlan
 
