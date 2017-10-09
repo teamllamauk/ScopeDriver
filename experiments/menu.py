@@ -56,8 +56,9 @@ menu = Menu(
 You can use anything to control dot3k.menu,
 but you'll probably want to use dot3k.touch
 """
-nav.bind_defaults(menu)
+#nav.bind_defaults(menu)
 
 while 1:
+    menu.down()
     menu.redraw()
-    time.sleep(0.05)
+    time.sleep(3)
