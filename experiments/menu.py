@@ -38,7 +38,7 @@ def btn_Callback(button_pin):
         menu.select_option()        
     elif button_pin == btn_black_top_pin:
         menu.up()
-    elif button_pin == btn_black_top_pin:
+    elif button_pin == btn_black_bottom_pin:
         menu.down()
 
 
@@ -60,6 +60,8 @@ GPIO.add_event_detect(btn_black_top_pin, GPIO.RISING, callback=btn_Callback, bou
 GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
+def backLight(r, g, b)
+    backlight.rgb(r, g, b)
 print("""
 This advanced example uses the menu framework.
 It gives you a basic menu setup with plugins. You should be able to view system info and adjust settings!
@@ -77,8 +79,8 @@ See GraphTemp, GraphCPU, Contrast and Backlight for examples.
 
 menu = Menu(
     structure={
-        'Setup': '1',        
-        'Tracking': '2',
+        'Setup': backLight(0, 255, 0),        
+        'Tracking': backLight(0, 0, 255),
         'Exit': '3'
     },
     lcd=lcd,    
