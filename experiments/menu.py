@@ -60,22 +60,16 @@ GPIO.add_event_detect(btn_black_top_pin, GPIO.RISING, callback=btn_Callback, bou
 GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-def backLight(r, g, b)
+def backLight(r, g, b):
     backlight.rgb(r, g, b)
+
+
 print("""
 This advanced example uses the menu framework.
 It gives you a basic menu setup with plugins. You should be able to view system info and adjust settings!
 Press CTRL+C to exit.
 """)
 
-
-"""
-Using a set of nested lists you can describe
-the menu you want to display on dot3k.
-Instances of classes derived from MenuOption can
-be used as menu items to show information or change settings.
-See GraphTemp, GraphCPU, Contrast and Backlight for examples.
-"""
 
 menu = Menu(
     structure={
@@ -86,11 +80,7 @@ menu = Menu(
     lcd=lcd,    
     input_handler=Text())
 
-"""
-You can use anything to control dot3k.menu,
-but you'll probably want to use dot3k.touch
-"""
-#nav.bind_defaults(menu)
+
 
 while 1:    
     menu.redraw()
