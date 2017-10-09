@@ -32,6 +32,9 @@ btn_yellow_pin = 19         # B
 btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
+def backLight(r, g, b):
+    backlight.rgb(r, g, b)
+
 # Callback Functions
 def btn_Callback(button_pin):
     if button_pin == btn_green_pin:
@@ -60,8 +63,7 @@ GPIO.add_event_detect(btn_black_top_pin, GPIO.RISING, callback=btn_Callback, bou
 GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-def backLight(r, g, b):
-    backlight.rgb(r, g, b)
+
 
 
 print("""
@@ -73,6 +75,7 @@ Press CTRL+C to exit.
 
 menu = Menu(
     structure={
+        'test': 'test',
         'Setup': backLight(0, 255, 0),        
         'Tracking': backLight(0, 0, 255),
         'Exit': '3'
