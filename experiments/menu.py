@@ -11,11 +11,11 @@ from dot3k.menu import Menu, MenuOption
 # Add the root examples dir so Python can find the plugins
 sys.path.append('../../')
 
-from plugins.clock import Clock
-from plugins.graph import IPAddress, GraphTemp, GraphCPU, GraphNetSpeed
-from plugins.text import Text
-from plugins.utils import Backlight, Contrast
-from plugins.wlan import Wlan
+#from plugins.clock import Clock
+#from plugins.graph import IPAddress, GraphTemp, GraphCPU, GraphNetSpeed
+#from plugins.text import Text
+#from plugins.utils import Backlight, Contrast
+#from plugins.wlan import Wlan
 
 
 print("""
@@ -35,17 +35,17 @@ See GraphTemp, GraphCPU, Contrast and Backlight for examples.
 
 menu = Menu(
     structure={
-        'WiFi': Wlan(),        
-        'Clock': Clock(backlight),
+        'WiFi': '1',        
+        'Clock': '2',
         'Status': {
-            'IP': IPAddress(),
-            'CPU': GraphCPU(backlight),
-            'Temp': GraphTemp()
+            'IP': '1.2.3.4',
+            'CPU': 'graph',
+            'Temp': 'temp'
         },
         'Settings': {
             'Display': {
-                'Contrast': Contrast(lcd),
-                'Backlight': Backlight(backlight)
+                'Contrast': 'lcd',
+                'Backlight': 'back'
             }
         }
     },
