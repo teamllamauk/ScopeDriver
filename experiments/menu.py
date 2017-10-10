@@ -23,7 +23,7 @@ GPIO.setwarnings(False)
 
 # Setup LCD
 lcd.clear()
-backlight.rgb(255, 0, 0)
+backlight.rgb(255, 255, 0)
 
 btn_red_pin = 27            # A
 btn_green_pin = 24          # Y
