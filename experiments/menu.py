@@ -10,9 +10,9 @@ from dot3k.menu import Menu, MenuOption
 from subprocess import call
 
 # Add the root examples dir so Python can find the plugins
-sys.path.append('../')
+#sys.path.append('../')
 
-from plugins.text import Text
+#from plugins.text import Text
 
 
 GPIO.setmode(GPIO.BCM)
