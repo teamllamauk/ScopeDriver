@@ -28,9 +28,11 @@ btn_yellow_pin = 19         # B
 btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
-def setBackLight(r, g, b):
-    #b = 1
-    backlight.rgb(r, g, b)
+def setBackLightGreen():    
+    backlight.rgb(0, 255, 0)
+    
+def setBackLightRed():
+    backlight.rgb(255, 0, 0)
 
 def exitProg():
     a = 1
@@ -77,8 +79,8 @@ Press CTRL+C to exit.
 menu = Menu(
     structure={
         'test': exitProg(),
-        'Setup': setBackLight(0, 255, 255),        
-        'Tracking': setBackLight(0, 100, 255),
+        'Green': setBackLightGreen(),        
+        'Red': setBackLightRed(),
         'Exit': exitProg()
     },
     lcd=lcd
