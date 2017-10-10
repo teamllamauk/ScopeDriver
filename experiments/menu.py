@@ -78,10 +78,10 @@ do_nothing = exitProg()
 
 menu = Menu(
     structure={
-        'test': exitProg(),
-        'Green': setBackLightGreen(),        
-        'Red': setBackLightRed(),
-        'Exit': exitProg()
+        'test': lambda: exitProg(),
+        'Green': lambda: setBackLightGreen(),        
+        'Red': lambda: setBackLightRed(),
+        'Exit': lambda: exitProg()
     },
     lcd=lcd,
     idle_handler=do_nothing,
