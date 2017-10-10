@@ -36,7 +36,7 @@ def backLight(r, g, b):
     backlight.rgb(r, g, b)
 
 def exitProg():
-    a == 1
+    a = 1
     # Do exit and shutdown system
     
 # Callback Functions
