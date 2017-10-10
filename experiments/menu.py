@@ -87,5 +87,5 @@ menu = Menu(
 
 
 while 1:    
-    menu.redraw()
+    #menu.redraw()
     time.sleep(0.05)
