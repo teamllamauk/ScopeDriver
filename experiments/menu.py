@@ -79,7 +79,7 @@ Press CTRL+C to exit.
 
 menu = Menu(
     structure={
-        'test': 'test',
+        'test': exitProg(),
         'Setup': backLight(0, 255, 255),        
         'Tracking': backLight(0, 100, 255),
         'Exit': exitProg()
