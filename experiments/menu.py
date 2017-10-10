@@ -38,6 +38,7 @@ def setBackLightRed():
 def exitProg(): 
     # Do exit and shutdown system
     print("Shutting Down")
+    lcd.clear()
     call("sudo shutdown -h now", shell=True)
     
     
