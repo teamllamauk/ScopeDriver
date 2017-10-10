@@ -29,8 +29,8 @@ btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
 def setBackLight(r, g, b):
-    b = 1
-    #backlight.rgb(r, g, b)
+    #b = 1
+    backlight.rgb(r, g, b)
 
 def exitProg():
     a = 1
