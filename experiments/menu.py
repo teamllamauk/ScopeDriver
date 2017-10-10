@@ -81,7 +81,7 @@ menu = Menu(
     structure={
         'test': 'test',
         'Setup': backLight(0, 255, 255),        
-        'Tracking': backLight(0, 0, 255),
+        'Tracking': backLight(0, 100, 255),
         'Exit': exitProg()
     },
     lcd=lcd,    
