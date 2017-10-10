@@ -82,8 +82,7 @@ menu = Menu(
         'Green': setBackLightGreen(),        
         'Red': setBackLightRed(),
         'Exit': exitProg()
-    },
-    lcd=lcd
+    }
     )
 
 
