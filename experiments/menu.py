@@ -35,6 +35,10 @@ btn_black_bottom_pin = 26   # grey wire
 def backLight(r, g, b):
     backlight.rgb(r, g, b)
 
+def exitProg():
+    a == 1
+    # Do exit and shutdown system
+    
 # Callback Functions
 def btn_Callback(button_pin):
     if button_pin == btn_green_pin:
@@ -78,7 +82,7 @@ menu = Menu(
         'test': 'test',
         'Setup': backLight(0, 255, 0),        
         'Tracking': backLight(0, 0, 255),
-        'Exit': '3'
+        'Exit': exitProg()
     },
     lcd=lcd,    
     input_handler=Text())
