@@ -7,6 +7,7 @@ import RPi.GPIO as GPIO
 import dothat.backlight as backlight
 import dothat.lcd as lcd
 from dot3k.menu import Menu, MenuOption
+from subprocess import call
 
 # Add the root examples dir so Python can find the plugins
 sys.path.append('../')
@@ -34,9 +35,11 @@ def setBackLightGreen():
 def setBackLightRed():
     backlight.rgb(255, 0, 0)
 
-def exitProg():
-    a = 1
+def exitProg(): 
     # Do exit and shutdown system
+    print("Shutting Down")
+    call("sudo shutdown -h now", shell=True)
+    
     
 # Callback Functions
 def btn_Callback(button_pin):
@@ -69,12 +72,7 @@ GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, 
 
 
 
-print("""
-This advanced example uses the menu framework.
-It gives you a basic menu setup with plugins. You should be able to view system info and adjust settings!
-Press CTRL+C to exit.
-""")
-do_nothing = exitProg()
+print("Press CTRL+C to exit.")
 
 menu = Menu(
     structure={
@@ -83,9 +81,7 @@ menu = Menu(
         'Red': lambda: setBackLightRed(),
         'Exit': lambda: exitProg()
     },
-    lcd=lcd,
-    idle_handler=do_nothing,
-    idle_timeout=30,
+    lcd=lcd
     )
 
 
