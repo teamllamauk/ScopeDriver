@@ -6,17 +6,13 @@ import RPi.GPIO as GPIO
 
 import dothat.backlight as backlight
 import dothat.lcd as lcd
-import dothat.touch as nav
 from dot3k.menu import Menu, MenuOption
 
 # Add the root examples dir so Python can find the plugins
 sys.path.append('../')
 
-#from plugins.clock import Clock
-#from plugins.graph import IPAddress, GraphTemp, GraphCPU, GraphNetSpeed
 from plugins.text import Text
-#from plugins.utils import Backlight, Contrast
-#from plugins.wlan import Wlan
+
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -85,8 +81,8 @@ menu = Menu(
         'Tracking': setBackLight(0, 100, 255),
         'Exit': exitProg()
     },
-    lcd=lcd,    
-    input_handler=Text())
+    lcd=lcd
+    )
 
 
 
