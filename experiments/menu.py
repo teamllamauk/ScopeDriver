@@ -74,7 +74,7 @@ This advanced example uses the menu framework.
 It gives you a basic menu setup with plugins. You should be able to view system info and adjust settings!
 Press CTRL+C to exit.
 """)
-
+do_nothing = exitProg()
 
 menu = Menu(
     structure={
@@ -82,7 +82,10 @@ menu = Menu(
         'Green': setBackLightGreen(),        
         'Red': setBackLightRed(),
         'Exit': exitProg()
-    }
+    },
+    lcd=lcd,
+    idle_handler=do_nothing,
+    idle_timeout=30,
     )
 
 
