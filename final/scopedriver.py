@@ -26,15 +26,6 @@ GPIO.setwarnings(False)
 lcd.clear()
 backlight.rgb(255, 0, 0)
 
-lcd.set_cursor_position(0, 0)
-lcd.write("Mode: ")
-
-lcd.set_cursor_position(0, 1)
-lcd.write("Delay: ")
-
-lcd.set_cursor_position(0, 2)
-lcd.write("Dir: ")
-
 # Pin assignments
 RA_Step_pin = 18
 RA_Dir_pin = 17
@@ -67,6 +58,23 @@ btn_black_bottom_pin = 26   # grey wire
 
 def setSoftwareMode(newMode):
     softwareMode = newMode
+    
+    if softwareMode == 'menu':
+            
+    elif softwareMode == 'manual':
+            
+    elif softwareMode == 'tracking':
+          
+    elif softwareMode == 'checkSpeed':
+        lcd.clear()
+        lcd.set_cursor_position(0, 0)
+        lcd.write("Mode: ")
+
+        lcd.set_cursor_position(0, 1)
+        lcd.write("Delay: ")
+
+        lcd.set_cursor_position(0, 2)
+        lcd.write("Dir: ")
 
 def exitProg(): 
     # Do exit and shutdown system
@@ -85,16 +93,24 @@ def btn_Callback(button_pin):
 
     if button_pin == btn_blue_pin:
         if softwareMode == 'menu':
-    
+        
+        elif softwareMode == 'manual':
+            
         elif softwareMode == 'tracking':
+            
+        elif softwareMode == 'checkSpeed':
             # Slow Down
             delay = delay + 0.0001
             RAMotor.updateDelay(delay)
 
     elif button_pin == btn_yellow_pin:
         if softwareMode == 'menu':
-    
+            
+        elif softwareMode == 'manual':
+            
         elif softwareMode == 'tracking':
+            
+        elif softwareMode == 'checkSpeed':
             # Speed Up
             delay = delay - 0.0001
             RAMotor.updateDelay(delay)
@@ -102,7 +118,11 @@ def btn_Callback(button_pin):
     elif button_pin == btn_green_pin:
         if softwareMode == 'menu':
             menu.select_option()
+        elif softwareMode == 'manual':
+            
         elif softwareMode == 'tracking':
+            
+        elif softwareMode == 'checkSpeed':
             # Start
             if running == 0:
                 RAMotor.breakTheLoop('0')        
@@ -119,8 +139,12 @@ def btn_Callback(button_pin):
                 print('Start')
     elif button_pin == btn_red_pin:
         if softwareMode == 'menu':
-    
+            
+        elif softwareMode == 'manual':
+            
         elif softwareMode == 'tracking':
+            
+        elif softwareMode == 'checkSpeed':
             # Stop
             running = 0
             RAMotor.breakTheLoop('1')
@@ -129,7 +153,11 @@ def btn_Callback(button_pin):
     elif button_pin == btn_black_top_pin:
         if softwareMode == 'menu':
             menu.up()
+        elif softwareMode == 'manual':
+            
         elif softwareMode == 'tracking':
+            
+        elif softwareMode == 'checkSpeed':
             # Change direction
             if direction == 1:
                 direction = 0
@@ -138,11 +166,15 @@ def btn_Callback(button_pin):
 
             RAMotor.motorDirection(direction)
             #L298Motor2.motorDirection(direction)
-    elif button_pin == btn_black_top_pin:
+    elif button_pin == btn_black_bottom_pin:
         if softwareMode == 'menu':
             menu.down()
+        elif softwareMode == 'manual':
+            setSoftwareMode('menu')
         elif softwareMode == 'tracking':
             
+        elif softwareMode == 'checkSpeed':
+            setSoftwareMode('menu')
 
 
 # GPIO inputs
@@ -166,7 +198,9 @@ GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, 
 
 menu = Menu(
     structure={
-        'Tracking': lambda: setSoftwareMode('tracking'),        
+        'Tracking': lambda: setSoftwareMode('tracking'),
+        'Manual': lambda: setSoftwareMode('manual'),
+        'Check Speed': lambda: setSoftwareMode('checkSpeed'),
         'Exit': lambda: exitProg()
     },
     lcd=lcd
@@ -178,7 +212,11 @@ while True:
     if softwareMode == 'menu':
         menu.redraw()
         time.sleep(0.05)
+    elif softwareMode == 'manual':
+    
     elif softwareMode == 'tracking':
+            
+    elif softwareMode == 'checkSpeed':
         lcd.set_cursor_position(6, 0)
         if running == 1:
             lcd.write("Running")
