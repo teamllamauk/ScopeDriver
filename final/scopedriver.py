@@ -65,6 +65,14 @@ btn_yellow_pin = 19         # B
 btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
+def setSoftwareMode(newMode):
+    softwareMode = newMode
+
+def exitProg(): 
+    # Do exit and shutdown system
+    print("Shutting Down")
+    lcd.clear()
+    call("sudo shutdown -h now", shell=True)
 
 # Callback Functions
 def btn_Callback(button_pin):
@@ -158,9 +166,7 @@ GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, 
 
 menu = Menu(
     structure={
-        'test': lambda: exitProg(),
-        'Green': lambda: setBackLightGreen(),        
-        'Red': lambda: setBackLightRed(),
+        'Tracking': lambda: setSoftwareMode('tracking'),        
         'Exit': lambda: exitProg()
     },
     lcd=lcd
