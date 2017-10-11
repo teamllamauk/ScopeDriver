@@ -1,20 +1,23 @@
 import dothat.backlight as backlight
 import dothat.lcd as lcd
+from dot3k.menu import Menu, MenuOption
 import RPi.GPIO as GPIO
 import time
 import threading
 #import functions_l298
 import functions_A4988
 
+from subprocess import call
 
 global delay
 global tracking
 global direction  # forward = 1, reverse = 0
+global softwareMode
 
 delay = 0.0012  # Step delay
 running = 0
 direction = 1
-
+softwareMode = 'menu'
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -73,45 +76,65 @@ def btn_Callback(button_pin):
     # print('btn callback - %s', button_pin)
 
     if button_pin == btn_blue_pin:
-        # Slow Down
-        delay = delay + 0.0001
-        RAMotor.updateDelay(delay)
+        if softwareMode == 'menu':
+    
+        elif softwareMode == 'tracking':
+            # Slow Down
+            delay = delay + 0.0001
+            RAMotor.updateDelay(delay)
 
     elif button_pin == btn_yellow_pin:
-        # Speed Up
-        delay = delay - 0.0001
-        RAMotor.updateDelay(delay)
+        if softwareMode == 'menu':
+    
+        elif softwareMode == 'tracking':
+            # Speed Up
+            delay = delay - 0.0001
+            RAMotor.updateDelay(delay)
 
     elif button_pin == btn_green_pin:
-        # Start
-        if running == 0:
-            RAMotor.breakTheLoop('0')        
-            RAMotor.updateSteps(-1) # Run non stop
-            RAMotor.motorDirection(direction)
-            t1 = threading.Thread(target=RAMotor.driveMotor)
-            t1.start()
-            #L298Motor2.breakTheLoop('0')
-            #L298Motor2.updateSteps(-1)
-            #L298Motor2.motorDirection(direction)
-            #t2 = threading.Thread(target=L298Motor2.halfStepDriveMotor)
-            #t2.start()
-            running = 1
-            print('Start')
+        if softwareMode == 'menu':
+            menu.select_option()
+        elif softwareMode == 'tracking':
+            # Start
+            if running == 0:
+                RAMotor.breakTheLoop('0')        
+                RAMotor.updateSteps(-1) # Run non stop
+                RAMotor.motorDirection(direction)
+                t1 = threading.Thread(target=RAMotor.driveMotor)
+                t1.start()
+                #L298Motor2.breakTheLoop('0')
+                #L298Motor2.updateSteps(-1)
+                #L298Motor2.motorDirection(direction)
+                #t2 = threading.Thread(target=L298Motor2.halfStepDriveMotor)
+                #t2.start()
+                running = 1
+                print('Start')
     elif button_pin == btn_red_pin:
-        # Stop
-        running = 0
-        RAMotor.breakTheLoop('1')
-        #L298Motor2.breakTheLoop('1')
-        print('Stop')
+        if softwareMode == 'menu':
+    
+        elif softwareMode == 'tracking':
+            # Stop
+            running = 0
+            RAMotor.breakTheLoop('1')
+            #L298Motor2.breakTheLoop('1')
+            print('Stop')
     elif button_pin == btn_black_top_pin:
-        # Change direction
-        if direction == 1:
-            direction = 0
-        else:
-            direction = 1
+        if softwareMode == 'menu':
+            menu.up()
+        elif softwareMode == 'tracking':
+            # Change direction
+            if direction == 1:
+                direction = 0
+            else:
+                direction = 1
 
-        RAMotor.motorDirection(direction)
-        #L298Motor2.motorDirection(direction)
+            RAMotor.motorDirection(direction)
+            #L298Motor2.motorDirection(direction)
+    elif button_pin == btn_black_top_pin:
+        if softwareMode == 'menu':
+            menu.down()
+        elif softwareMode == 'tracking':
+            
 
 
 # GPIO inputs
@@ -133,20 +156,34 @@ GPIO.add_event_detect(btn_black_top_pin, GPIO.RISING, callback=btn_Callback, bou
 GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
+menu = Menu(
+    structure={
+        'test': lambda: exitProg(),
+        'Green': lambda: setBackLightGreen(),        
+        'Red': lambda: setBackLightRed(),
+        'Exit': lambda: exitProg()
+    },
+    lcd=lcd
+    )
+
+
 # Main loop
 while True:
+    if softwareMode == 'menu':
+        menu.redraw()
+        time.sleep(0.05)
+    elif softwareMode == 'tracking':
+        lcd.set_cursor_position(6, 0)
+        if running == 1:
+            lcd.write("Running")
+        else:
+            lcd.write("Stopped")
 
-    lcd.set_cursor_position(6, 0)
-    if running == 1:
-        lcd.write("Running")
-    else:
-        lcd.write("Stopped")
+        lcd.set_cursor_position(7, 1)
+        lcd.write("{:.4f}".format(delay))
 
-    lcd.set_cursor_position(7, 1)
-    lcd.write("{:.4f}".format(delay))
-
-    lcd.set_cursor_position(5, 2)
-    if direction == 1:
-        lcd.write("Forward")
-    else:
-        lcd.write("Reverse")
+        lcd.set_cursor_position(5, 2)
+        if direction == 1:
+            lcd.write("Forward")
+        else:
+            lcd.write("Reverse")
