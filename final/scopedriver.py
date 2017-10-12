@@ -93,11 +93,11 @@ def btn_Callback(button_pin):
 
     if button_pin == btn_blue_pin:
         if softwareMode == 'menu':
-        
+            a = 1 # do nothing yet
         elif softwareMode == 'manual':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'tracking':
-            
+            a = 1 # do nothing yet   
         elif softwareMode == 'checkSpeed':
             # Slow Down
             delay = delay + 0.0001
@@ -105,11 +105,11 @@ def btn_Callback(button_pin):
 
     elif button_pin == btn_yellow_pin:
         if softwareMode == 'menu':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'manual':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'tracking':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'checkSpeed':
             # Speed Up
             delay = delay - 0.0001
@@ -119,9 +119,9 @@ def btn_Callback(button_pin):
         if softwareMode == 'menu':
             menu.select_option()
         elif softwareMode == 'manual':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'tracking':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'checkSpeed':
             # Start
             if running == 0:
@@ -139,11 +139,11 @@ def btn_Callback(button_pin):
                 print('Start')
     elif button_pin == btn_red_pin:
         if softwareMode == 'menu':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'manual':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'tracking':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'checkSpeed':
             # Stop
             running = 0
@@ -154,9 +154,9 @@ def btn_Callback(button_pin):
         if softwareMode == 'menu':
             menu.up()
         elif softwareMode == 'manual':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'tracking':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'checkSpeed':
             # Change direction
             if direction == 1:
@@ -172,7 +172,7 @@ def btn_Callback(button_pin):
         elif softwareMode == 'manual':
             setSoftwareMode('menu')
         elif softwareMode == 'tracking':
-            
+            a = 1 # do nothing yet    
         elif softwareMode == 'checkSpeed':
             setSoftwareMode('menu')
 
@@ -213,9 +213,9 @@ while True:
         menu.redraw()
         time.sleep(0.05)
     elif softwareMode == 'manual':
-    
+        a = 1 # do nothing yet
     elif softwareMode == 'tracking':
-            
+        a = 1 # do nothing yet        
     elif softwareMode == 'checkSpeed':
         lcd.set_cursor_position(6, 0)
         if running == 1:
