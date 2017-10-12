@@ -60,11 +60,11 @@ def setSoftwareMode(newMode):
     softwareMode = newMode
     
     if softwareMode == 'menu':
-        # do nothing yet       
+        a = 1 # do nothing yet       
     elif softwareMode == 'manual':
-        # do nothing yet
+        a = 1 # do nothing yet
     elif softwareMode == 'tracking':
-        # do nothing yet
+        a = 1 # do nothing yet
     elif softwareMode == 'checkSpeed':
         lcd.clear()
         lcd.set_cursor_position(0, 0)
