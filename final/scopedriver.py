@@ -58,7 +58,7 @@ btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
 def setSoftwareMode(newMode):
-    Print("Set Mode In: ", newMode)
+    print("Set Mode In: ", newMode)
     softwareMode = newMode
     
     if softwareMode == 'displayMenu':
