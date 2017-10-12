@@ -58,20 +58,21 @@ btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
 def setSoftwareMode(newMode):
-    print("Set Mode In: ", newMode)
+    print "Set Mode In: ", newMode
     softwareMode = newMode
+    print "New Mode: ", softwareMode
     
     if softwareMode == 'displayMenu':
         a = 1 # do nothing yet
-        print("Set Mode Menu")
+        print "Set Mode Menu"
     elif softwareMode == 'manual':
         a = 1 # do nothing yet
-        print("Set Mode Manual")
+        print "Set Mode Manual" 
     elif softwareMode == 'tracking':
         a = 1 # do nothing yet
         print("Set Mode Tracking")
     elif softwareMode == 'checkSpeed':
-        print("Set Mode Check Speed")
+        print "Set Mode Check Speed"
         lcd.clear()
         lcd.set_cursor_position(0, 0)
         lcd.write("Mode: ")
@@ -81,6 +82,7 @@ def setSoftwareMode(newMode):
 
         lcd.set_cursor_position(0, 2)
         lcd.write("Dir: ")
+        print "Current Mode: ", softwareMode
 
 def exitProg(): 
     # Do exit and shutdown system
