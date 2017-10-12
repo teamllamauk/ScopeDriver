@@ -58,6 +58,7 @@ btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
 def setSoftwareMode(newMode):
+    global softwareMode
     print "Set Mode In: ", newMode
     softwareMode = newMode
     print "New Mode: ", softwareMode
@@ -85,7 +86,8 @@ def setSoftwareMode(newMode):
         
     print "Current Mode: ", softwareMode
 
-def exitProg(): 
+def exitProg():
+    global softwareMode
     # Do exit and shutdown system
     print("Shutting Down in 5...")
     lcd.clear()
@@ -94,7 +96,7 @@ def exitProg():
 
 # Callback Functions
 def btn_Callback(button_pin):
-
+    global softwareMode
     print "btn start - Current Mode: ", softwareMode
     
     global delay
