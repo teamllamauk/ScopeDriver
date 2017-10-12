@@ -17,7 +17,8 @@ global softwareMode
 delay = 0.0012  # Step delay
 running = 0
 direction = 1
-softwareMode = 'menu'
+softwareMode = 'displayMenu'
+Print("Start............")
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -57,15 +58,20 @@ btn_black_top_pin = 16      # purple wire
 btn_black_bottom_pin = 26   # grey wire
 
 def setSoftwareMode(newMode):
+    Print("Set Mode In: ", newMode)
     softwareMode = newMode
     
-    if softwareMode == 'menu':
-        a = 1 # do nothing yet       
+    if softwareMode == 'displayMenu':
+        a = 1 # do nothing yet
+        Print("Set Mode Menu")
     elif softwareMode == 'manual':
         a = 1 # do nothing yet
+        Print("Set Mode Manual")
     elif softwareMode == 'tracking':
         a = 1 # do nothing yet
+        Print("Set Mode Tracking")
     elif softwareMode == 'checkSpeed':
+        Print("Set Mode Check Speed")
         lcd.clear()
         lcd.set_cursor_position(0, 0)
         lcd.write("Mode: ")
@@ -93,7 +99,7 @@ def btn_Callback(button_pin):
     # print('btn callback - %s', button_pin)
 
     if button_pin == btn_blue_pin:
-        if softwareMode == 'menu':
+        if softwareMode == 'displayMenu':
             a = 1 # do nothing yet
         elif softwareMode == 'manual':
             a = 1 # do nothing yet    
@@ -105,7 +111,7 @@ def btn_Callback(button_pin):
             RAMotor.updateDelay(delay)
 
     elif button_pin == btn_yellow_pin:
-        if softwareMode == 'menu':
+        if softwareMode == 'displayMenu':
             a = 1 # do nothing yet    
         elif softwareMode == 'manual':
             a = 1 # do nothing yet    
@@ -117,7 +123,7 @@ def btn_Callback(button_pin):
             RAMotor.updateDelay(delay)
 
     elif button_pin == btn_green_pin:
-        if softwareMode == 'menu':
+        if softwareMode == 'displayMenu':
             menu.select_option()
         elif softwareMode == 'manual':
             a = 1 # do nothing yet    
@@ -139,7 +145,7 @@ def btn_Callback(button_pin):
                 running = 1
                 print('Start')
     elif button_pin == btn_red_pin:
-        if softwareMode == 'menu':
+        if softwareMode == 'displayMenu':
             a = 1 # do nothing yet    
         elif softwareMode == 'manual':
             a = 1 # do nothing yet    
@@ -152,7 +158,7 @@ def btn_Callback(button_pin):
             #L298Motor2.breakTheLoop('1')
             print('Stop')
     elif button_pin == btn_black_top_pin:
-        if softwareMode == 'menu':
+        if softwareMode == 'displayMenu':
             menu.up()
         elif softwareMode == 'manual':
             a = 1 # do nothing yet    
@@ -168,14 +174,14 @@ def btn_Callback(button_pin):
             RAMotor.motorDirection(direction)
             #L298Motor2.motorDirection(direction)
     elif button_pin == btn_black_bottom_pin:
-        if softwareMode == 'menu':
+        if softwareMode == 'displayMenu':
             menu.down()
         elif softwareMode == 'manual':
-            setSoftwareMode('menu')
+            setSoftwareMode('displayMenu')
         elif softwareMode == 'tracking':
-            a = 1 # do nothing yet    
+            setSoftwareMode('displayMenu')   
         elif softwareMode == 'checkSpeed':
-            setSoftwareMode('menu')
+            setSoftwareMode('displayMenu')
 
 
 # GPIO inputs
@@ -210,7 +216,7 @@ menu = Menu(
 
 # Main loop
 while True:
-    if softwareMode == 'menu':
+    if softwareMode == 'displayMenu':
         print("Menu")
         menu.redraw()
         time.sleep(0.05)
