@@ -18,7 +18,6 @@ delay = 0.0012  # Step delay
 running = 0
 direction = 1
 softwareMode = 'displayMenu'
-print("Start............")
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -59,32 +58,19 @@ btn_black_bottom_pin = 26   # grey wire
 
 def setSoftwareMode(newMode):
     global softwareMode
-    print "Set Mode In: ", newMode
-    softwareMode = newMode
-    print "New Mode: ", softwareMode
     
-    if softwareMode == 'displayMenu':
-        a = 1 # do nothing yet
-        print "Set Mode Menu"
-    elif softwareMode == 'manual':
-        a = 1 # do nothing yet
-        print "Set Mode Manual" 
-    elif softwareMode == 'tracking':
-        a = 1 # do nothing yet
-        print("Set Mode Tracking")
-    elif softwareMode == 'checkSpeed':
-        print "Set Mode Check Speed"
-        lcd.clear()
-        lcd.set_cursor_position(0, 0)
-        lcd.write("Mode: ")
-
-        lcd.set_cursor_position(0, 1)
-        lcd.write("Delay: ")
-
-        lcd.set_cursor_position(0, 2)
-        lcd.write("Dir: ")
+    softwareMode = newMode    
+    
+    #if softwareMode == 'displayMenu':
+    #    a = 1 # do nothing yet        
+    #elif softwareMode == 'manual':
+    #    a = 1 # do nothing yet
+    #elif softwareMode == 'tracking':
+    #    a = 1 # do nothing yet
+    #elif softwareMode == 'checkSpeed':
         
-    print "Current Mode: ", softwareMode
+        
+    
 
 def exitProg():
     global softwareMode
@@ -97,9 +83,7 @@ def exitProg():
 
 # Callback Functions
 def btn_Callback(button_pin):
-    global softwareMode
-    print "btn start - Current Mode: ", softwareMode
-    
+    global softwareMode     
     global delay
     global running
     global direction
@@ -191,7 +175,7 @@ def btn_Callback(button_pin):
         elif softwareMode == 'checkSpeed':
             setSoftwareMode('displayMenu')
     
-    print "btn end - Current Mode: ", softwareMode
+
 
 
 # GPIO inputs
@@ -226,20 +210,24 @@ menu = Menu(
 
 # Main loop
 while True:
-    print "loop - Current Mode: ", softwareMode
-    
+        
     if softwareMode == 'displayMenu':
-        print("Menu")
         menu.redraw()
         time.sleep(0.05)
     elif softwareMode == 'manual':
-        print("Manual")
         a = 1 # do nothing yet
     elif softwareMode == 'tracking':
-        print("Tracking")
         a = 1 # do nothing yet        
     elif softwareMode == 'checkSpeed':
-        print("Check Speed")
+        lcd.clear()
+        
+        lcd.set_cursor_position(0, 0)
+        lcd.write("Mode: ")
+        lcd.set_cursor_position(0, 1)
+        lcd.write("Delay: ")
+        lcd.set_cursor_position(0, 2)
+        lcd.write("Dir: ")
+        
         lcd.set_cursor_position(6, 0)
         if running == 1:
             lcd.write("Running")
@@ -256,4 +244,3 @@ while True:
             lcd.write("Reverse")
     else:
         break
-    print "end loop - Current Mode: ", softwareMode
