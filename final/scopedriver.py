@@ -58,19 +58,8 @@ btn_black_bottom_pin = 26   # grey wire
 
 def setSoftwareMode(newMode):
     global softwareMode
-    
+    lcd.clear()
     softwareMode = newMode    
-    
-    #if softwareMode == 'displayMenu':
-    #    a = 1 # do nothing yet        
-    #elif softwareMode == 'manual':
-    #    a = 1 # do nothing yet
-    #elif softwareMode == 'tracking':
-    #    a = 1 # do nothing yet
-    #elif softwareMode == 'checkSpeed':
-        
-        
-    
 
 def exitProg():
     global softwareMode
@@ -82,7 +71,7 @@ def exitProg():
     time.sleep(5)
     call("sudo shutdown -h now", shell=True)
 
-# Callback Functions
+# Button Press Callback Function
 def btn_Callback(button_pin):
     global softwareMode     
     global delay
@@ -177,8 +166,6 @@ def btn_Callback(button_pin):
             setSoftwareMode('displayMenu')
     
 
-
-
 # GPIO inputs
 GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_red_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
@@ -198,16 +185,16 @@ GPIO.add_event_detect(btn_black_top_pin, GPIO.RISING, callback=btn_Callback, bou
 GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
+# Menu Structure
 menu = Menu(
     structure={
+        'Exit': lambda: exitProg(),
         'Tracking': lambda: setSoftwareMode('tracking'),
         'Manual': lambda: setSoftwareMode('manual'),
-        'Check Speed': lambda: setSoftwareMode('checkSpeed'),
-        'Exit': lambda: exitProg()
+        'Check Speed': lambda: setSoftwareMode('checkSpeed')        
     },
     lcd=lcd
     )
-
 
 # Main loop
 while True:
@@ -219,9 +206,7 @@ while True:
         a = 1 # do nothing yet
     elif softwareMode == 'tracking':
         a = 1 # do nothing yet        
-    elif softwareMode == 'checkSpeed':
-        lcd.clear()
-        
+    elif softwareMode == 'checkSpeed':       
         lcd.set_cursor_position(0, 0)
         lcd.write("Mode: ")
         lcd.set_cursor_position(0, 1)
