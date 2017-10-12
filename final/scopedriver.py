@@ -223,7 +223,7 @@ while True:
         lcd.set_cursor_position(10, 1)
         lcd.write("{:.4f}".format(delay))
 
-        lcd.set_cursor_position(7, 2)
+        lcd.set_cursor_position(9, 2)
         if direction == 1:
             lcd.write("Forward")
         else:
