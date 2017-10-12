@@ -18,7 +18,7 @@ delay = 0.0012  # Step delay
 running = 0
 direction = 1
 softwareMode = 'displayMenu'
-Print("Start............")
+print("Start............")
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -63,15 +63,15 @@ def setSoftwareMode(newMode):
     
     if softwareMode == 'displayMenu':
         a = 1 # do nothing yet
-        Print("Set Mode Menu")
+        print("Set Mode Menu")
     elif softwareMode == 'manual':
         a = 1 # do nothing yet
-        Print("Set Mode Manual")
+        print("Set Mode Manual")
     elif softwareMode == 'tracking':
         a = 1 # do nothing yet
-        Print("Set Mode Tracking")
+        print("Set Mode Tracking")
     elif softwareMode == 'checkSpeed':
-        Print("Set Mode Check Speed")
+        print("Set Mode Check Speed")
         lcd.clear()
         lcd.set_cursor_position(0, 0)
         lcd.write("Mode: ")
