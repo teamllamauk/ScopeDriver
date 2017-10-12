@@ -88,6 +88,7 @@ def setSoftwareMode(newMode):
 
 def exitProg():
     global softwareMode
+    softwareMode = ""
     # Do exit and shutdown system
     print("Shutting Down in 5...")
     lcd.clear()
@@ -253,5 +254,6 @@ while True:
             lcd.write("Forward")
         else:
             lcd.write("Reverse")
-
+    else
+        break
     print "end loop - Current Mode: ", softwareMode
