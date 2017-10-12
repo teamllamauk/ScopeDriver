@@ -78,8 +78,9 @@ def setSoftwareMode(newMode):
 
 def exitProg(): 
     # Do exit and shutdown system
-    print("Shutting Down")
+    print("Shutting Down in 5...")
     lcd.clear()
+    time.sleep(5)
     call("sudo shutdown -h now", shell=True)
 
 # Callback Functions
@@ -210,13 +211,17 @@ menu = Menu(
 # Main loop
 while True:
     if softwareMode == 'menu':
+        print("Menu")
         menu.redraw()
         time.sleep(0.05)
     elif softwareMode == 'manual':
+        print("Manual")
         a = 1 # do nothing yet
     elif softwareMode == 'tracking':
+        print("Tracking")
         a = 1 # do nothing yet        
     elif softwareMode == 'checkSpeed':
+        print("Check Speed")
         lcd.set_cursor_position(6, 0)
         if running == 1:
             lcd.write("Running")
