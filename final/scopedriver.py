@@ -254,6 +254,6 @@ while True:
             lcd.write("Forward")
         else:
             lcd.write("Reverse")
-    else
+    else:
         break
     print "end loop - Current Mode: ", softwareMode
