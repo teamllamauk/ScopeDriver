@@ -95,6 +95,8 @@ def exitProg():
 # Callback Functions
 def btn_Callback(button_pin):
 
+    print "btn start - Current Mode: ", softwareMode
+    
     global delay
     global running
     global direction
@@ -185,6 +187,8 @@ def btn_Callback(button_pin):
             setSoftwareMode('displayMenu')   
         elif softwareMode == 'checkSpeed':
             setSoftwareMode('displayMenu')
+    
+    print "btn end - Current Mode: ", softwareMode
 
 
 # GPIO inputs
@@ -219,6 +223,8 @@ menu = Menu(
 
 # Main loop
 while True:
+    print "loop - Current Mode: ", softwareMode
+    
     if softwareMode == 'displayMenu':
         print("Menu")
         menu.redraw()
@@ -245,3 +251,5 @@ while True:
             lcd.write("Forward")
         else:
             lcd.write("Reverse")
+
+    print "end loop - Current Mode: ", softwareMode
