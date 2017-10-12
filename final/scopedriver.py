@@ -78,6 +78,7 @@ def exitProg():
     # Do exit and shutdown system
     print("Shutting Down in 5...")
     lcd.clear()
+    backlight.off()
     time.sleep(5)
     call("sudo shutdown -h now", shell=True)
 
