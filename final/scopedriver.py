@@ -82,7 +82,8 @@ def setSoftwareMode(newMode):
 
         lcd.set_cursor_position(0, 2)
         lcd.write("Dir: ")
-        print "Current Mode: ", softwareMode
+        
+    print "Current Mode: ", softwareMode
 
 def exitProg(): 
     # Do exit and shutdown system
