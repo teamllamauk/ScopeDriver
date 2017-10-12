@@ -214,16 +214,16 @@ while True:
         lcd.set_cursor_position(0, 2)
         lcd.write("Dir: ")
         
-        lcd.set_cursor_position(6, 0)
+        lcd.set_cursor_position(9, 0)
         if running == 1:
             lcd.write("Running")
         else:
             lcd.write("Stopped")
 
-        lcd.set_cursor_position(7, 1)
+        lcd.set_cursor_position(10, 1)
         lcd.write("{:.4f}".format(delay))
 
-        lcd.set_cursor_position(5, 2)
+        lcd.set_cursor_position(7, 2)
         if direction == 1:
             lcd.write("Forward")
         else:
