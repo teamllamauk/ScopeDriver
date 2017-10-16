@@ -44,7 +44,7 @@ with open('JSONData.json', 'w') as f:
 
 # Read from json
 
-with open('JSONDate.json', 'r') as f:
+with open('JSONData.json', 'r') as f:
     data = json.load(f)
 
 print(data)
