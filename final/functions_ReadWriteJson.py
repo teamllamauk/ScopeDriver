@@ -1,14 +1,14 @@
-import os.path
+import os
 import json
 
 class functions_ReadWriteJson():
 
     def __init__(self):
                 
-        settingsFile = path("ScopeSettings.json")
+        settingsAbsPath =  os.path.abspath("ScopeSettings.json")
         
         try:
-            settingsAbsPath = settingsFile.resolve()
+            settingsResolved = settingsAbsPath.resolve()
         except FileNotFoundError:
             data = {
                 "speed":"0.0012"
