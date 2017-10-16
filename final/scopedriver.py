@@ -6,6 +6,7 @@ import time
 import threading
 #import functions_l298
 import functions_A4988
+import functions_ReadWriteJson
 
 from subprocess import call
 
@@ -13,8 +14,11 @@ global delay
 global tracking
 global direction  # forward = 1, reverse = 0
 global softwareMode
+global JSON_settings
 
-delay = 0.0012  # Step delay
+JSON_ReadWrite = functions_ReadWriteJson.functions_ReadWriteJson()
+
+delay = 0 # Step delay
 running = 0
 direction = 1
 softwareMode = 'displayMenu'
@@ -77,6 +81,7 @@ def btn_Callback(button_pin):
     global delay
     global running
     global direction
+    global JSON_settings
 
     # print('btn callback - %s', button_pin)
 
@@ -114,6 +119,9 @@ def btn_Callback(button_pin):
         elif softwareMode == 'checkSpeed':
             # Start
             if running == 0:
+                JSON_settings = JSON_ReadWrite.readJSON()
+                delay = JSON_settings["speed"]  
+                RAMotor.updateDelay(delay)
                 RAMotor.breakTheLoop('0')        
                 RAMotor.updateSteps(-1) # Run non stop
                 RAMotor.motorDirection(direction)
@@ -138,6 +146,8 @@ def btn_Callback(button_pin):
             running = 0
             RAMotor.breakTheLoop('1')
             #L298Motor2.breakTheLoop('1')
+            JSON_settings["speed"] = delay
+            JSON_ReadWrite.writeJSON(JSON_settings)
             print('Stop')
     elif button_pin == btn_black_top_pin:
         if softwareMode == 'displayMenu':
