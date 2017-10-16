@@ -120,7 +120,7 @@ def btn_Callback(button_pin):
             # Start
             if running == 0:
                 JSON_settings = JSON_ReadWrite.readJSON()
-                delay = JSON_settings["speed"]
+                delay = int(JSON_settings["speed"])
                 print("JSON Speed: ", delay)
                 RAMotor.updateDelay(delay)
                 RAMotor.breakTheLoop('0')        
