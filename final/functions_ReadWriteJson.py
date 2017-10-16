@@ -5,7 +5,7 @@ class functions_ReadWriteJson():
 
     def __init__(self):
                 
-        settingsFile = Path("ScopeSettings.json")
+        settingsFile = path("ScopeSettings.json")
         
         try:
             settingsAbsPath = settingsFile.resolve()
