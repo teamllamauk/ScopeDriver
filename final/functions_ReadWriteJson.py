@@ -8,7 +8,7 @@ class functions_ReadWriteJson():
         settingsFile = Path("ScopeSettings.json")
         
         try:
-            settingsAbsPath = settingsFile.resolve():
+            settingsAbsPath = settingsFile.resolve()
         except FileNotFoundError:
             data = {
                 "speed":"0.0012"
