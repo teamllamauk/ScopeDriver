@@ -2,12 +2,7 @@
 
 import json
 
-# Read from json
 
-with open('JSONDate.json', 'r') as f:
-    data = json.load(f)
-
-print(data)
 
 
 # Write to Json
@@ -45,3 +40,11 @@ print(jsonData)
 
 with open('JSONData.json', 'w') as f:
      json.dump(jsonData, f)
+
+
+# Read from json
+
+with open('JSONDate.json', 'r') as f:
+    data = json.load(f)
+
+print(data)
