@@ -9,7 +9,8 @@ class functions_ReadWriteJson():
         
         try:
             settingsResolved = settingsAbsPath.resolve()
-        except FileNotFoundError:
+        except:
+            print "Unexpected error:", sys.exc_info()[0]
             data = {
                 "speed":"0.0012"
             }
