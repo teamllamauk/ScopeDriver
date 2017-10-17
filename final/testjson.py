@@ -30,3 +30,4 @@ JSON_ReadWrite = functions_ReadWriteJson.functions_ReadWriteJson()
 
 JSON_settings = JSON_ReadWrite.readJSON()
 print(JSON_settings)
+print(JSON_settings['settings'][0]['speed'])
