@@ -19,5 +19,7 @@ with open('data.json') as json_file:
     #    print(p['speed'])
 
     
-isFileExists = os.path.isfile('data.jsona')
-print(isFileExists)
+if os.path.isfile('data.jsona'):
+    print("True")
+else:
+    print("False")
