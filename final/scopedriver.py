@@ -18,7 +18,9 @@ global JSON_settings
 
 JSON_ReadWrite = functions_ReadWriteJson.functions_ReadWriteJson()
 
-delay = 0 # Step delay
+JSON_settings = JSON_ReadWrite.readJSON()
+delay = JSON_settings['settings'][0]['speed'] # Step delay
+
 running = 0
 direction = 1
 softwareMode = 'displayMenu'
@@ -120,21 +122,17 @@ def btn_Callback(button_pin):
             # Start
             if running == 0:
                 JSON_settings = JSON_ReadWrite.readJSON()
-                delayString = JSON_settings["speed"]
-                print("JSON Speed String: ", delayString)
-                delay = int(delayString)
-                print("JSON Speed Int: ", delay)
+                delay = JSON_settings['settings'][0]['speed'] # Step delay
+                print(delay)
+                
                 RAMotor.updateDelay(delay)
                 RAMotor.breakTheLoop('0')        
                 RAMotor.updateSteps(-1) # Run non stop
                 RAMotor.motorDirection(direction)
+                
                 t1 = threading.Thread(target=RAMotor.driveMotor)
                 t1.start()
-                #L298Motor2.breakTheLoop('0')
-                #L298Motor2.updateSteps(-1)
-                #L298Motor2.motorDirection(direction)
-                #t2 = threading.Thread(target=L298Motor2.halfStepDriveMotor)
-                #t2.start()
+                
                 running = 1
                 print('Start')
     elif button_pin == btn_red_pin:
@@ -148,9 +146,10 @@ def btn_Callback(button_pin):
             # Stop
             running = 0
             RAMotor.breakTheLoop('1')
-            #L298Motor2.breakTheLoop('1')
-            JSON_settings["speed"] = delay
-            JSON_ReadWrite.writeJSON(JSON_settings)
+                        
+            #JSON_settings["speed"] = delay
+            #JSON_ReadWrite.writeJSON(JSON_settings)
+            
             print('Stop')
     elif button_pin == btn_black_top_pin:
         if softwareMode == 'displayMenu':
