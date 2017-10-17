@@ -13,4 +13,4 @@ with open('data.json', 'w') as outfile:
 with open('data.json') as json_file:
     data = json.load(json_file)
     for p in data['settings']:
-        print('speed: ' + p['speed'])
+        print(p['speed'])
