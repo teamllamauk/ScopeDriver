@@ -29,5 +29,6 @@ import functions_ReadWriteJson
 JSON_ReadWrite = functions_ReadWriteJson.functions_ReadWriteJson()
 
 JSON_settings = JSON_ReadWrite.readJSON()
-print(JSON_settings)
-print(JSON_settings['settings'][0]['speed'])
+scope_Speed = JSON_settings['settings'][0]['speed']
+
+print(scope_Speed)
