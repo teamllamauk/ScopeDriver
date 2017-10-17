@@ -14,6 +14,6 @@ with open('data.json') as json_file:
     data = json.load(json_file)
     print(data)
     print(data['settings'][0])
-    print(data['settings']['speed'])
+    print(data['settings'][0]['speed'])
     #for p in data['settings']:
     #    print(p['speed'])
