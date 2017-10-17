@@ -7,7 +7,7 @@ class functions_ReadWriteJson():
                 
         settingsAbsPath =  os.path.abspath("ScopeSettings.json")
         
-        if os.path.isfile('data.json'):
+        if os.path.isfile('ScopeSettings.json'):
             print("Found file")
         else:
             print("File Not Found")
