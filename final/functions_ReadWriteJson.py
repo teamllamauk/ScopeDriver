@@ -22,6 +22,7 @@ class functions_ReadWriteJson():
     def readJSON(self):
         with open('ScopeSettings.json', 'r') as f:
             rawData = f.readlines()
+            print(rawData)
             data = json.loads(rawData)
             return (data)
     
