@@ -146,9 +146,10 @@ def btn_Callback(button_pin):
             # Stop
             running = 0
             RAMotor.breakTheLoop('1')
-                        
-            #JSON_settings["speed"] = delay
-            #JSON_ReadWrite.writeJSON(JSON_settings)
+             
+            JSON_settings = JSON_ReadWrite.readJSON()
+            JSON_settings['settings'][0]['speed'] = delay            
+            JSON_ReadWrite.writeJSON(JSON_settings)
             
             print('Stop')
     elif button_pin == btn_black_top_pin:
