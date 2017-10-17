@@ -17,3 +17,7 @@ with open('data.json') as json_file:
     print(data['settings'][0]['speed'])
     #for p in data['settings']:
     #    print(p['speed'])
+
+    
+isFileExists = os.path.isfile('data.json')
+print(isFileExists)
