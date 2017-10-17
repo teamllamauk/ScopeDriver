@@ -19,7 +19,7 @@ with open('data.json') as json_file:
     #    print(p['speed'])
 
     
-if os.path.isfile('data.jsona'):
+if os.path.isfile('data.json'):
     print("True")
 else:
     print("False")
