@@ -117,11 +117,13 @@ def btn_Callback(button_pin):
         if softwareMode == 'displayMenu':
             a = 1 # do nothing yet
         elif softwareMode == 'manual':
+            print('Jog Dec+')
             DecMotor.updateDelay(Dec_delay)
             DecMotor.updateSteps(Jog_Steps)
             DecMotor.motorDirection(Dec_Direction)
             DecMotor.driveMotor()    
         elif softwareMode == 'tracking':
+            print('Jog Dec+')
             DecMotor.updateDelay(Dec_delay)
             DecMotor.updateSteps(Jog_Steps)
             DecMotor.motorDirection(Dec_Direction)
@@ -135,6 +137,7 @@ def btn_Callback(button_pin):
         if softwareMode == 'displayMenu':
             a = 1 # do nothing yet    
         elif softwareMode == 'manual':
+            print('Jog Dec-')
             DecMotor.updateDelay(Dec_delay)
             DecMotor.updateSteps(Jog_Steps)
             if Dec_Direction == 0:
@@ -143,6 +146,7 @@ def btn_Callback(button_pin):
                 DecMotor.motorDirection(0)
             DecMotor.driveMotor()    
         elif softwareMode == 'tracking':
+            print('Jog Dec-')
             DecMotor.updateDelay(Dec_delay)
             DecMotor.updateSteps(Jog_Steps)
             if Dec_Direction == 0:
@@ -162,6 +166,7 @@ def btn_Callback(button_pin):
         if softwareMode == 'displayMenu':
             menu.select_option()
         elif softwareMode == 'manual':
+            print('Jog RA+')
             RAMotor.updateDelay(RA_delay)
             RAMotor.updateSteps(Jog_Steps)
             RAMotor.motorDirection(RA_Direction)
@@ -198,6 +203,7 @@ def btn_Callback(button_pin):
         if softwareMode == 'displayMenu':
             a = 1 # do nothing yet    
         elif softwareMode == 'manual':
+            print('Jog RA-')
             RAMotor.updateDelay(RA_delay)
             RAMotor.updateSteps(Jog_Steps)
             if RA_Direction == 0:
@@ -287,15 +293,20 @@ while True:
         lcd.write("Step Count: ")
         lcd.set_cursor_position(12, 1)
         lcd.write(str(Jog_Steps))
+        lcd.set_cursor_position(0, 2)
+        lcd.write("                ")
     elif softwareMode == 'tracking':
         lcd.set_cursor_position(0, 0)
         lcd.write("Mode: Tracking")
         lcd.set_cursor_position(0, 1)
         lcd.write("Motor: ")
+        lcd.set_cursor_position(7, 1)
         if running == 1:
             lcd.write("Running")
         else:
             lcd.write("Stopped")
+        lcd.set_cursor_position(0, 2)
+        lcd.write("                ")
             
     elif softwareMode == 'checkSpeed':       
         lcd.set_cursor_position(0, 0)
