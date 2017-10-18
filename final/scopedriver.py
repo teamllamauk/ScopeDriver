@@ -292,15 +292,20 @@ while True:
         lcd.set_cursor_position(0, 1)
         lcd.write("Step Count: ")
         lcd.set_cursor_position(13, 1)
-        lcd.write(str(Jog_Steps))
+        if len(str(Jog_Steps)) == 1:
+            lcd.write("00" + str(Jog_Steps))
+        elif len(str(Jog_Steps)) == 2:
+            lcd.write("0" + str(Jog_Steps))
+        elif len(str(Jog_Steps)) == 3:
+            lcd.write(str(Jog_Steps))
         lcd.set_cursor_position(0, 2)
         lcd.write("                ")
     elif softwareMode == 'tracking':
         lcd.set_cursor_position(0, 0)
-        lcd.write("Mode:    Tracking")
+        lcd.write("Mode:   Tracking")
         lcd.set_cursor_position(0, 1)
         lcd.write("Motor: ")
-        lcd.set_cursor_position(10, 1)
+        lcd.set_cursor_position(9, 1)
         if running == 1:
             lcd.write("Running")
         else:
