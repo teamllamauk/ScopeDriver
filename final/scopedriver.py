@@ -286,7 +286,7 @@ while True:
         lcd.set_cursor_position(0, 1)
         lcd.write("Step Count: ")
         lcd.set_cursor_position(12, 1)
-        lcd.write(Jog_Steps)
+        lcd.write(str(Jog_Steps))
     elif softwareMode == 'tracking':
         lcd.set_cursor_position(0, 0)
         lcd.write("Mode: Tracking")
