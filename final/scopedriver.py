@@ -279,10 +279,24 @@ while True:
     if softwareMode == 'displayMenu':
         menu.redraw()
         time.sleep(0.05)
+        
     elif softwareMode == 'manual':
-        a = 1 # do nothing yet
+        lcd.set_cursor_position(0, 0)
+        lcd.write("Mode: Manual")
+        lcd.set_cursor_position(0, 1)
+        lcd.write("Step Count: ")
+        lcd.set_cursor_position(12, 1)
+        lcd.write(Jog_Steps)
     elif softwareMode == 'tracking':
-        a = 1 # do nothing yet        
+        lcd.set_cursor_position(0, 0)
+        lcd.write("Mode: Tracking")
+        lcd.set_cursor_position(0, 1)
+        lcd.write("Motor: ")
+        if running == 1:
+            lcd.write("Running")
+        else:
+            lcd.write("Stopped")
+            
     elif softwareMode == 'checkSpeed':       
         lcd.set_cursor_position(0, 0)
         lcd.write("Mode: ")
@@ -305,5 +319,6 @@ while True:
             lcd.write("Forward")
         else:
             lcd.write("Reverse")
+        
     else:
         break
