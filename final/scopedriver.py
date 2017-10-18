@@ -10,20 +10,26 @@ import functions_ReadWriteJson
 
 from subprocess import call
 
-global delay
+global RA_delay
+global Dec_delay
 global tracking
-global direction  # forward = 1, reverse = 0
+global RA_Direction  # forward = 1, reverse = 0
+global Dec_Direction  # forward = 1, reverse = 0
 global softwareMode
 global JSON_settings
+global Jog_Steps
 
 JSON_ReadWrite = functions_ReadWriteJson.functions_ReadWriteJson()
 
 JSON_settings = JSON_ReadWrite.readJSON()
-delay = JSON_settings['settings'][0]['speed'] # Step delay
+RA_delay = JSON_settings['settings'][0]['speed'] # Step delay
+Dec_delay = 0.001
 
 running = 0
-direction = 1
+RA_Direction = 1
+Dec_Direction = 1
 softwareMode = 'displayMenu'
+Jog_Steps = 1
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -36,17 +42,15 @@ backlight.rgb(255, 0, 0)
 RA_Step_pin = 18
 RA_Dir_pin = 17
 
-DEC_A1_pin = 1
-DEC_A2_pin = 5
-DEC_B1_pin = 6
-DEC_B2_pin = 13
+DEC_Step_pin = 5
+DEC_Dir_pin = 6
 
-RAMotor = functions_A4988.functions_A4988(delay, '1')
+
+RAMotor = functions_A4988.functions_A4988(RA_delay, '1')
 RAMotor.setupGPIO(RA_Step_pin, RA_Dir_pin)
 
-#L298Motor2 = functions_l298.functions_l298(delay, '1')
-#L298Motor2.setupGPIO(DEC_A1_pin, DEC_A2_pin, DEC_B1_pin, DEC_B2_pin)
-
+DecMotor = functions_A4988.functions_A4988(Dec_delay, '1')
+DecMotor.setupGPIO(DEC_Step_pin, DEC_Dir_pin)
 
 # Button Layout
 #
@@ -67,6 +71,18 @@ def setSoftwareMode(newMode):
     lcd.clear()
     softwareMode = newMode    
 
+def changeStepCount():
+    global Jog_Steps
+    
+    if Jog_Steps == 1:
+        Jog_Steps = 10
+    elif Jog_Steps == 10:
+        Jog_Steps = 50
+    elif Jog_Steps == 50:
+        Jog_Steps = 100
+    else:
+        Jog_Steps = 1
+    
 def exitProg():
     global softwareMode
     softwareMode = ""
@@ -74,16 +90,26 @@ def exitProg():
     print("Shutting Down in 5...")
     lcd.clear()
     backlight.off()
-    time.sleep(5)
+    time.sleep(1)
+    print("4...")
+    time.sleep(1)
+    print("3...")
+    time.sleep(1)
+    print("2...")
+    time.sleep(1)
+    print("1...")
+    time.sleep(1)
     call("sudo shutdown -h now", shell=True)
 
 # Button Press Callback Function
 def btn_Callback(button_pin):
     global softwareMode     
-    global delay
+    global RA_delay
     global running
-    global direction
+    global RA_Direction
+    global Dec_Direction
     global JSON_settings
+    global Jog_Steps
 
     # print('btn callback - %s', button_pin)
 
@@ -91,93 +117,131 @@ def btn_Callback(button_pin):
         if softwareMode == 'displayMenu':
             a = 1 # do nothing yet
         elif softwareMode == 'manual':
-            a = 1 # do nothing yet    
+            DecMotor.updateDelay(Dec_delay)
+            DecMotor.updateSteps(Jog_Steps)
+            DecMotor.motorDirection(Dec_Direction)
+            DecMotor.driveMotor()    
         elif softwareMode == 'tracking':
-            a = 1 # do nothing yet   
+            DecMotor.updateDelay(Dec_delay)
+            DecMotor.updateSteps(Jog_Steps)
+            DecMotor.motorDirection(Dec_Direction)
+            DecMotor.driveMotor()   
         elif softwareMode == 'checkSpeed':
             # Slow Down
-            delay = delay + 0.0001
-            RAMotor.updateDelay(delay)
+            RA_delay = RA_delay + 0.0001
+            RAMotor.updateDelay(RA_delay)
 
     elif button_pin == btn_yellow_pin:
         if softwareMode == 'displayMenu':
             a = 1 # do nothing yet    
         elif softwareMode == 'manual':
-            a = 1 # do nothing yet    
+            DecMotor.updateDelay(Dec_delay)
+            DecMotor.updateSteps(Jog_Steps)
+            if Dec_Direction == 0:
+                DecMotor.motorDirection(1)
+            else:
+                DecMotor.motorDirection(0)
+            DecMotor.driveMotor()    
         elif softwareMode == 'tracking':
-            a = 1 # do nothing yet    
+            DecMotor.updateDelay(Dec_delay)
+            DecMotor.updateSteps(Jog_Steps)
+            if Dec_Direction == 0:
+                DecMotor.motorDirection(1)
+            else:
+                DecMotor.motorDirection(0)
+            DecMotor.driveMotor()    
         elif softwareMode == 'checkSpeed':
             # Speed Up
-            delay = delay - 0.0001
-            RAMotor.updateDelay(delay)
+            RA_delay = RA_delay - 0.0001
+            RAMotor.updateDelay(RA_delay)
 
     elif button_pin == btn_green_pin:
+        JSON_settings = JSON_ReadWrite.readJSON()
+        RA_delay = JSON_settings['settings'][0]['speed'] # Step delay
+        
         if softwareMode == 'displayMenu':
             menu.select_option()
         elif softwareMode == 'manual':
-            a = 1 # do nothing yet    
+            RAMotor.updateDelay(RA_delay)
+            RAMotor.updateSteps(Jog_Steps)
+            RAMotor.motorDirection(RA_Direction)
+            RAMotor.driveMotor()
         elif softwareMode == 'tracking':
-            a = 1 # do nothing yet    
-        elif softwareMode == 'checkSpeed':
-            # Start
             if running == 0:
-                JSON_settings = JSON_ReadWrite.readJSON()
-                delay = JSON_settings['settings'][0]['speed'] # Step delay
-                print(delay)
                 
-                RAMotor.updateDelay(delay)
+                RAMotor.updateDelay(RA_delay)
                 RAMotor.breakTheLoop('0')        
                 RAMotor.updateSteps(-1) # Run non stop
-                RAMotor.motorDirection(direction)
+                RAMotor.motorDirection(RA_Direction)
+                
+                t1 = threading.Thread(target=RAMotor.driveMotor)
+                t1.start()
+                
+                running = 1
+                print('Start Tracking')    
+        elif softwareMode == 'checkSpeed':
+            # Start
+            if running == 0:                
+                
+                RAMotor.updateDelay(RA_delay)
+                RAMotor.breakTheLoop('0')        
+                RAMotor.updateSteps(-1) # Run non stop
+                RAMotor.motorDirection(RA_Direction)
                 
                 t1 = threading.Thread(target=RAMotor.driveMotor)
                 t1.start()
                 
                 running = 1
                 print('Start')
+                
     elif button_pin == btn_red_pin:
         if softwareMode == 'displayMenu':
             a = 1 # do nothing yet    
         elif softwareMode == 'manual':
-            a = 1 # do nothing yet    
+            RAMotor.updateDelay(RA_delay)
+            RAMotor.updateSteps(Jog_Steps)
+            if RA_Direction == 0:
+                RAMotor.motorDirection(1)
+            else:
+                RAMotor.motorDirection(0)
+            RAMotor.driveMotor()    
         elif softwareMode == 'tracking':
-            a = 1 # do nothing yet    
+            running = 0
+            RAMotor.breakTheLoop('1')
+            print('Stop Tracking')
         elif softwareMode == 'checkSpeed':
             # Stop
             running = 0
             RAMotor.breakTheLoop('1')
              
             JSON_settings = JSON_ReadWrite.readJSON()
-            JSON_settings['settings'][0]['speed'] = delay            
+            JSON_settings['settings'][0]['speed'] = RA_delay            
             JSON_ReadWrite.writeJSON(JSON_settings)
             
             print('Stop')
+            
     elif button_pin == btn_black_top_pin:
         if softwareMode == 'displayMenu':
             menu.up()
         elif softwareMode == 'manual':
-            a = 1 # do nothing yet    
+            changeStepCount()                
         elif softwareMode == 'tracking':
             a = 1 # do nothing yet    
         elif softwareMode == 'checkSpeed':
             # Change direction
-            if direction == 1:
-                direction = 0
+            if RA_Direction == 1:
+                RA_Direction = 0
             else:
-                direction = 1
+                RA_Direction = 1
 
-            RAMotor.motorDirection(direction)
+            RAMotor.motorDirection(RA_Direction)
             #L298Motor2.motorDirection(direction)
+            
     elif button_pin == btn_black_bottom_pin:
         if softwareMode == 'displayMenu':
             menu.down()
-        elif softwareMode == 'manual':
-            setSoftwareMode('displayMenu')
-        elif softwareMode == 'tracking':
-            setSoftwareMode('displayMenu')   
-        elif softwareMode == 'checkSpeed':
-            setSoftwareMode('displayMenu')
-    
+        else:
+            setSoftwareMode('displayMenu')    
 
 # GPIO inputs
 GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -234,10 +298,10 @@ while True:
             lcd.write("Stopped")
 
         lcd.set_cursor_position(10, 1)
-        lcd.write("{:.4f}".format(delay))
+        lcd.write("{:.4f}".format(RA_delay))
 
         lcd.set_cursor_position(9, 2)
-        if direction == 1:
+        if RA_Direction == 1:
             lcd.write("Forward")
         else:
             lcd.write("Reverse")
