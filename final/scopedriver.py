@@ -288,19 +288,19 @@ while True:
         
     elif softwareMode == 'manual':
         lcd.set_cursor_position(0, 0)
-        lcd.write("Mode: Manual")
+        lcd.write("Mode:     Manual")
         lcd.set_cursor_position(0, 1)
         lcd.write("Step Count: ")
-        lcd.set_cursor_position(12, 1)
+        lcd.set_cursor_position(13, 1)
         lcd.write(str(Jog_Steps))
         lcd.set_cursor_position(0, 2)
         lcd.write("                ")
     elif softwareMode == 'tracking':
         lcd.set_cursor_position(0, 0)
-        lcd.write("Mode: Tracking")
+        lcd.write("Mode:    Tracking")
         lcd.set_cursor_position(0, 1)
         lcd.write("Motor: ")
-        lcd.set_cursor_position(7, 1)
+        lcd.set_cursor_position(10, 1)
         if running == 1:
             lcd.write("Running")
         else:
