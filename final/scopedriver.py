@@ -37,6 +37,7 @@ GPIO.setwarnings(False)
 # Setup LCD
 lcd.clear()
 backlight.rgb(255, 0, 0)
+lcd.set_contrast(50)
 
 # Pin assignments
 RA_Step_pin = 18
