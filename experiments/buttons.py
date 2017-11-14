@@ -12,7 +12,7 @@ btn_black_bottom_pin = 9   # grey wire
 
 
 GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(btn_green_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(btn_green_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(btn_blue_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(btn_yellow_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(btn_black_top_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -24,3 +24,8 @@ while True:
         print "Red Button ON" 
     else:
         print "Red Button Off"
+    
+    if GPIO.input(btn_green_pin): 
+        print "Green Button ON" 
+    else:
+        print "Green Button Off"
