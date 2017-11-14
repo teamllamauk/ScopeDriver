@@ -60,12 +60,12 @@ DecMotor.setupGPIO(DEC_Step_pin, DEC_Dir_pin)
 #       B                   Yellow
 #
 
-btn_red_pin = 27            # A
-btn_green_pin = 24          # Y
-btn_blue_pin = 9            # X
-btn_yellow_pin = 19         # B
-btn_black_top_pin = 16      # purple wire
-btn_black_bottom_pin = 26   # grey wire
+btn_red_pin = 26            # A
+btn_green_pin = 19          # Y
+btn_blue_pin = 13            # X
+btn_yellow_pin = 6         # B
+btn_black_top_pin = 5      # purple wire
+btn_black_bottom_pin = 9   # grey wire
 
 def setSoftwareMode(newMode):
     global softwareMode
@@ -251,22 +251,22 @@ def btn_Callback(button_pin):
             setSoftwareMode('displayMenu')    
 
 # GPIO inputs
-GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(btn_red_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(btn_red_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-GPIO.setup(btn_green_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(btn_green_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(btn_green_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-GPIO.setup(btn_blue_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(btn_blue_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(btn_blue_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-GPIO.setup(btn_yellow_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(btn_yellow_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(btn_yellow_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-GPIO.setup(btn_black_top_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(btn_black_top_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(btn_black_top_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
-GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(btn_black_bottom_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
 
 # Menu Structure
