@@ -40,11 +40,11 @@ backlight.rgb(255, 0, 0)
 lcd.set_contrast(50)
 
 # Pin assignments
-RA_Step_pin = 18
-RA_Dir_pin = 17
+RA_Step_pin = 22
+RA_Dir_pin = 27
 
-DEC_Step_pin = 5
-DEC_Dir_pin = 6
+DEC_Step_pin = 17
+DEC_Dir_pin = 4
 
 
 RAMotor = functions_A4988.functions_A4988(RA_delay, '1')
