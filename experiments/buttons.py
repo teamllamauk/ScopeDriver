@@ -18,6 +18,12 @@ GPIO.setup(btn_yellow_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(btn_black_top_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+def btn_Callback(button_pin):
+    print button_pin
+
+
+GPIO.add_event_detect(btn_green_pin, GPIO.RISING, callback=btn_Callback, bouncetime=300)
+
 # Main loop
 while True:
     #if GPIO.input(btn_red_pin): 
@@ -25,8 +31,8 @@ while True:
     #else:
     #    print "Red Button Off"
     #time.sleep(0.05)
-    if GPIO.input(btn_green_pin) == 0: 
-        print "Green Button ON" 
-    else:
-        print "Green Button Off"
+    #if GPIO.input(btn_green_pin) == 0: 
+        #print "Green Button ON" 
+    #else:
+        #print "Green Button Off"
     #time.sleep(0.05)
