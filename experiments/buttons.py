@@ -20,13 +20,13 @@ GPIO.setup(btn_black_bottom_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Main loop
 while True:
-    if GPIO.input(btn_red_pin): 
-        print "Red Button ON" 
-    else:
-        print "Red Button Off"
-    time.sleep(0.05)
+    #if GPIO.input(btn_red_pin): 
+    #    print "Red Button ON" 
+    #else:
+    #    print "Red Button Off"
+    #time.sleep(0.05)
     if GPIO.input(btn_green_pin): 
         print "Green Button ON" 
     else:
         print "Green Button Off"
-    time.sleep(0.05)
+    #time.sleep(0.05)
