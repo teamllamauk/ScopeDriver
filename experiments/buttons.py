@@ -24,8 +24,9 @@ while True:
         print "Red Button ON" 
     else:
         print "Red Button Off"
-    
+    time.sleep(0.05)
     if GPIO.input(btn_green_pin): 
         print "Green Button ON" 
     else:
         print "Green Button Off"
+    time.sleep(0.05)
