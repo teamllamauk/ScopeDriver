@@ -26,6 +26,7 @@ GPIO.add_event_detect(btn_green_pin, GPIO.RISING, callback=btn_Callback, bouncet
 
 # Main loop
 while True:
+    a = 1
     #if GPIO.input(btn_red_pin): 
     #    print "Red Button ON" 
     #else:
