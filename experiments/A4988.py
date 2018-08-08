@@ -58,5 +58,5 @@ while True:
         count = 0
         direction = 1
         GPIO.output(pinDir, direction)
-    else:
+    elif count == 20 and direction == 1:
         break
