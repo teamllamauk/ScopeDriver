@@ -23,26 +23,39 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-GPIO.setup(22, GPIO.OUT)
-GPIO.output(22, 0)
+#pins
+pinStep = 22
+pinDir = 27
+
+
+GPIO.setup(pinStep, GPIO.OUT)
+GPIO.output(pinStep, 0)
+
+GPIO.setup(pinDir, GPIO.OUT)
+GPIO.output(pinDir, 0)
+
 
 #stepTime = 0.05
 stepTime = 2
 delay = stepTime / 2
 count = 0
+direction = 0
 
 print(delay)
 
 while True:
     
-    GPIO.output(22, 1)    
+    GPIO.output(pinStep, 1)    
     time.sleep(delay)
-    GPIO.output(22, 0)
+    GPIO.output(pinStep, 0)
     time.sleep(delay)
     
     count = count + 1
     
     print(count)
     
-    if count == 20:
+    if count == 20 and direction == 0:
+        direction = 1
+        GPIO.output(pinDir, direction)
+    else:
         break
