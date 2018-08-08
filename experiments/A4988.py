@@ -37,7 +37,7 @@ GPIO.output(pinDir, 0)
 
 
 #stepTime = 0.05
-stepTime = 0.5
+stepTime = 0.05
 delay = stepTime / 2
 count = 0
 direction = 0
