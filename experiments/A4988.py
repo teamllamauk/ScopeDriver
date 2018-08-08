@@ -35,9 +35,9 @@ print(delay)
 
 while True:
     
-    GPIO.output(18, 1)    
+    GPIO.output(22, 1)    
     time.sleep(delay)
-    GPIO.output(18, 0)
+    GPIO.output(22, 0)
     time.sleep(delay)
     
     count = count + 1
