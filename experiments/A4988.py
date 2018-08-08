@@ -55,6 +55,7 @@ while True:
     print(count)
     
     if count == 20 and direction == 0:
+        count = 0
         direction = 1
         GPIO.output(pinDir, direction)
     else:
