@@ -36,7 +36,7 @@ GPIO.output(pinDir, 0)
 
 
 #stepTime = 0.05
-stepTime = 2
+stepTime = 0.5
 delay = stepTime / 2
 count = 0
 direction = 0
@@ -54,9 +54,9 @@ while True:
     
     print(count)
     
-    if count == 20 and direction == 0:
+    if count == 40 and direction == 0:
         count = 0
         direction = 1
         GPIO.output(pinDir, direction)
-    elif count == 20 and direction == 1:
+    elif count == 40 and direction == 1:
         break
